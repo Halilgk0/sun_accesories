@@ -17,10 +17,15 @@ class ProductController extends Controller
             ->when($category !== '', fn ($query) => $query->where('category', $category))
             ->when($request->filled('arama'), function ($query) use ($request) {
                 $term = $request->string('arama')->toString();
+
+                // SQLite's LIKE ignores case, Postgres' does not, so ask for a
+                // case-insensitive match explicitly on the drivers that need it.
+                $operator = $query->getConnection()->getDriverName() === 'pgsql' ? 'ilike' : 'like';
+
                 // Search both language columns so a term works whichever language is showing.
-                $query->where(function ($inner) use ($term) {
+                $query->where(function ($inner) use ($term, $operator) {
                     foreach (['name', 'name_en', 'tagline', 'tagline_en', 'stone', 'stone_en'] as $column) {
-                        $inner->orWhere($column, 'like', "%{$term}%");
+                        $inner->orWhere($column, $operator, "%{$term}%");
                     }
                 });
             })

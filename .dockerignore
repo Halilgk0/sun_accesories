@@ -1,0 +1,29 @@
+.git
+.github
+.claude
+.cursor
+.vercel
+.playwright-mcp
+
+.env
+.env.*
+!.env.example
+
+# Rebuilt inside the image
+node_modules
+vendor
+public/build
+public/hot
+
+# Not durable on Vercel, and seeded against the managed database instead
+database/*.sqlite*
+
+storage/framework/cache/data/*
+storage/framework/sessions/*
+storage/framework/views/*
+storage/logs/*
+
+tests
+phpunit.xml
+.phpunit.result.cache
+*.log
