@@ -86,7 +86,9 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'url' => env('DB_URL'),
+            // Managed Postgres add-ons inject their own connection string, so
+            // fall back to the names Neon and Supabase use before giving up.
+            'url' => env('DB_URL', env('DATABASE_URL', env('POSTGRES_URL'))),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '5432'),
             'database' => env('DB_DATABASE', 'laravel'),
