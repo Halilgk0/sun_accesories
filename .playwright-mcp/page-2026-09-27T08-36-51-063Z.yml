@@ -1,0 +1,256 @@
+- generic [active] [ref=f1e1]:
+  - link "Skip to content" [ref=f1e2] [cursor=pointer]:
+    - /url: "#icerik"
+  - generic [ref=f1e4]:
+    - generic [ref=f1e5]:
+      - generic [ref=f1e6]:
+        - generic [ref=f1e7]: ☀
+        - text: Free shipping over 1,500 ₺
+      - generic [ref=f1e8]:
+        - generic [ref=f1e9]: ✿
+        - text: Every piece is finished by hand in our İzmir atelier
+      - generic [ref=f1e10]:
+        - generic [ref=f1e11]: ✦
+        - text: Free returns within 14 days
+      - generic [ref=f1e12]:
+        - generic [ref=f1e13]: ✧
+        - text: New pieces on the bench every month
+    - generic [aria-hidden] [ref=f1e14]:
+      - generic [ref=f1e15]:
+        - generic [ref=f1e16]: ☀
+        - text: Free shipping over 1,500 ₺
+      - generic [ref=f1e17]:
+        - generic [ref=f1e18]: ✿
+        - text: Every piece is finished by hand in our İzmir atelier
+      - generic [ref=f1e19]:
+        - generic [ref=f1e20]: ✦
+        - text: Free returns within 14 days
+      - generic [ref=f1e21]:
+        - generic [ref=f1e22]: ✧
+        - text: New pieces on the bench every month
+  - banner [ref=f1e23]:
+    - generic [ref=f1e24]:
+      - link "S Sun ACCESORIES" [ref=f1e25] [cursor=pointer]:
+        - /url: https://sun-accesories.vercel.app
+        - generic [ref=f1e26]: S
+        - generic [ref=f1e29]:
+          - generic [ref=f1e30]: Sun
+          - generic [ref=f1e31]: ACCESORIES
+      - navigation "Main menu" [ref=f1e32]:
+        - link "Home" [ref=f1e33] [cursor=pointer]:
+          - /url: https://sun-accesories.vercel.app
+        - link "Collection" [ref=f1e34] [cursor=pointer]:
+          - /url: https://sun-accesories.vercel.app/urunler
+        - link "Atelier" [ref=f1e35] [cursor=pointer]:
+          - /url: https://sun-accesories.vercel.app/hakkimizda
+        - link "Contact" [ref=f1e36] [cursor=pointer]:
+          - /url: https://sun-accesories.vercel.app/iletisim
+      - generic [ref=f1e37]:
+        - group "Language" [ref=f1e38]:
+          - button "Switch to Türkçe" [ref=f1e40]: tr
+          - button "Switch to English" [ref=f1e42]: en
+        - link "Sign in" [ref=f1e43] [cursor=pointer]:
+          - /url: https://sun-accesories.vercel.app/giris
+        - link "My basket (0 items)" [ref=f1e44] [cursor=pointer]:
+          - /url: https://sun-accesories.vercel.app/sepet
+  - main [ref=f1e48]:
+    - status [ref=f1e49]:
+      - paragraph [ref=f1e53]: Sunrise Necklace added to your basket ☀️
+      - button "Close" [ref=f1e54]
+    - generic [ref=f1e59]:
+      - navigation "Main menu" [ref=f1e60]:
+        - link "Home" [ref=f1e61] [cursor=pointer]:
+          - /url: https://sun-accesories.vercel.app
+        - generic [ref=f1e62]: /
+        - link "Necklaces" [ref=f1e63] [cursor=pointer]:
+          - /url: https://sun-accesories.vercel.app/urunler?kategori=necklace
+        - generic [ref=f1e64]: /
+        - generic [ref=f1e65]: Sunrise Necklace
+      - generic [ref=f1e66]:
+        - generic [ref=f1e67]:
+          - generic [ref=f1e68]:
+            - img "Sunrise Necklace — The first light of the day, worn close" [ref=f1e69]
+            - generic [ref=f1e70]: 24% off
+          - paragraph [ref=f1e71]: Hover the image to see the detail
+          - generic [ref=f1e72]:
+            - generic [ref=f1e73]:
+              - term [ref=f1e74]: Material
+              - definition [ref=f1e75]: 18k gold plated
+            - generic [ref=f1e76]:
+              - term [ref=f1e77]: Stone
+              - definition [ref=f1e78]: Citrine
+            - generic [ref=f1e79]:
+              - term [ref=f1e80]: Category
+              - definition [ref=f1e81]: Necklaces
+        - generic [ref=f1e82]:
+          - generic [ref=f1e83]: Bestseller
+          - heading "Sunrise Necklace" [level=1] [ref=f1e84]
+          - paragraph [ref=f1e85]: The first light of the day, worn close
+          - generic [ref=f1e86]:
+            - generic [ref=f1e87]:
+              - generic [ref=f1e99]: 4,9
+              - generic [ref=f1e100]: 148 reviews
+            - generic [ref=f1e101]: In stock · 24 left
+          - paragraph [ref=f1e103]:
+            - generic [ref=f1e104]: 1.290,00 ₺
+            - generic [ref=f1e105]: 1.690,00 ₺
+          - paragraph [ref=f1e106]: VAT included · Shipping calculated at checkout
+          - paragraph [ref=f1e107]: A sun whose rays are shaped one by one by hand, meeting a honey-coloured citrine at its centre. On a fine 45 cm chain, it sits at your collarbone all day.
+          - generic [ref=f1e109]:
+            - generic [ref=f1e110]:
+              - button "Decrease quantity" [ref=f1e111]: −
+              - generic [ref=f1e112]: Quantity
+              - spinbutton "Quantity" [ref=f1e113]: "1"
+              - button "Increase quantity" [ref=f1e114]: +
+            - button "Add to basket" [ref=f1e115]
+          - generic [ref=f1e116]:
+            - group [ref=f1e117]:
+              - generic [ref=f1e118] [cursor=pointer]
+              - paragraph [ref=f1e122]: Free shipping over 1,500 ₺. Orders placed before 2pm leave the same day and arrive in 1–3 working days.
+            - group [ref=f1e123]:
+              - generic [ref=f1e124] [cursor=pointer]
+            - group [ref=f1e128]:
+              - generic [ref=f1e129] [cursor=pointer]
+    - generic [ref=f1e134]:
+      - heading "These sit well with it" [level=2] [ref=f1e135]
+      - generic [ref=f1e136]:
+        - article [ref=f1e137]:
+          - generic [ref=f1e138]:
+            - link [aria-hidden] [ref=f1e139] [cursor=pointer]:
+              - /url: https://sun-accesories.vercel.app/urun/kelebek-halhal
+            - generic [ref=f1e140]:
+              - generic [ref=f1e141]: Everyday Favourite
+              - generic [ref=f1e142]: 24% off
+            - button "Add to basket" [ref=f1e144]
+          - generic [ref=f1e147]:
+            - generic [ref=f1e148]:
+              - generic [ref=f1e149]: Anklets
+              - generic [ref=f1e151]:
+                - text: 4,7
+                - generic [ref=f1e154]: (118)
+            - heading [level=3] [ref=f1e155]:
+              - link "Butterfly Anklet" [ref=f1e156] [cursor=pointer]:
+                - /url: https://sun-accesories.vercel.app/urun/kelebek-halhal
+            - paragraph [ref=f1e158]:
+              - generic [ref=f1e159]: 549,00 ₺
+              - generic [ref=f1e160]: 720,00 ₺
+        - article [ref=f1e161]:
+          - generic [ref=f1e162]:
+            - link [aria-hidden] [ref=f1e163] [cursor=pointer]:
+              - /url: https://sun-accesories.vercel.app/urun/lale-yuzuk
+            - generic [ref=f1e164]: Handmade
+            - button "Add to basket" [ref=f1e167]
+          - generic [ref=f1e170]:
+            - generic [ref=f1e171]:
+              - generic [ref=f1e172]: Rings
+              - generic [ref=f1e174]:
+                - text: 4,9
+                - generic [ref=f1e177]: (37)
+            - heading [level=3] [ref=f1e178]:
+              - link "Tulip Ring" [ref=f1e179] [cursor=pointer]:
+                - /url: https://sun-accesories.vercel.app/urun/lale-yuzuk
+            - generic [ref=f1e180]:
+              - paragraph [ref=f1e181]:
+                - generic [ref=f1e182]: 1.150,00 ₺
+              - generic [ref=f1e183]: Only 9 left
+        - article [ref=f1e184]:
+          - generic [ref=f1e185]:
+            - link [aria-hidden] [ref=f1e186] [cursor=pointer]:
+              - /url: https://sun-accesories.vercel.app/urun/amber-isilti-bileklik
+            - generic [ref=f1e187]:
+              - generic [ref=f1e188]: On Sale
+              - generic [ref=f1e189]: 22% off
+            - button "Add to basket" [ref=f1e191]
+          - generic [ref=f1e194]:
+            - generic [ref=f1e195]:
+              - generic [ref=f1e196]: Bracelets
+              - generic [ref=f1e198]:
+                - text: 5,0
+                - generic [ref=f1e201]: (61)
+            - heading [level=3] [ref=f1e202]:
+              - link "Amber Glow Bracelet" [ref=f1e203] [cursor=pointer]:
+                - /url: https://sun-accesories.vercel.app/urun/amber-isilti-bileklik
+            - paragraph [ref=f1e205]:
+              - generic [ref=f1e206]: 899,00 ₺
+              - generic [ref=f1e207]: 1.150,00 ₺
+        - article [ref=f1e208]:
+          - generic [ref=f1e209]:
+            - link [aria-hidden] [ref=f1e210] [cursor=pointer]:
+              - /url: https://sun-accesories.vercel.app/urun/papatya-kupe
+            - generic [ref=f1e211]: New In
+            - button "Add to basket" [ref=f1e214]
+          - generic [ref=f1e217]:
+            - generic [ref=f1e218]:
+              - generic [ref=f1e219]: Earrings
+              - generic [ref=f1e221]:
+                - text: 4,8
+                - generic [ref=f1e224]: (92)
+            - heading [level=3] [ref=f1e225]:
+              - link "Daisy Studs" [ref=f1e226] [cursor=pointer]:
+                - /url: https://sun-accesories.vercel.app/urun/papatya-kupe
+            - paragraph [ref=f1e228]:
+              - generic [ref=f1e229]: 649,00 ₺
+  - contentinfo [ref=f1e230]:
+    - generic [ref=f1e232]:
+      - generic [ref=f1e233]:
+        - generic [ref=f1e234]:
+          - generic [ref=f1e235]: S
+          - generic [ref=f1e236]: Sun Accesories
+        - paragraph [ref=f1e237]: We turn sunlight into jewellery. Every piece is finished by hand in our small İzmir atelier, while the light is still on the bench.
+        - generic [ref=f1e238]:
+          - link "Instagram" [ref=f1e239] [cursor=pointer]:
+            - /url: "#"
+          - link "Pinterest" [ref=f1e242] [cursor=pointer]:
+            - /url: "#"
+          - link "WhatsApp" [ref=f1e245] [cursor=pointer]:
+            - /url: "#"
+      - generic [ref=f1e248]:
+        - heading "Shop" [level=3] [ref=f1e249]
+        - list [ref=f1e250]:
+          - listitem [ref=f1e251]:
+            - link "Full collection" [ref=f1e252] [cursor=pointer]:
+              - /url: https://sun-accesories.vercel.app/urunler
+          - listitem [ref=f1e253]:
+            - link "Necklaces" [ref=f1e254] [cursor=pointer]:
+              - /url: https://sun-accesories.vercel.app/urunler?kategori=necklace
+          - listitem [ref=f1e255]:
+            - link "Earrings" [ref=f1e256] [cursor=pointer]:
+              - /url: https://sun-accesories.vercel.app/urunler?kategori=earrings
+          - listitem [ref=f1e257]:
+            - link "Rings" [ref=f1e258] [cursor=pointer]:
+              - /url: https://sun-accesories.vercel.app/urunler?kategori=ring
+          - listitem [ref=f1e259]:
+            - link "My basket" [ref=f1e260] [cursor=pointer]:
+              - /url: https://sun-accesories.vercel.app/sepet
+      - generic [ref=f1e261]:
+        - heading "Help" [level=3] [ref=f1e262]
+        - list [ref=f1e263]:
+          - listitem [ref=f1e264]:
+            - link "Our atelier" [ref=f1e265] [cursor=pointer]:
+              - /url: https://sun-accesories.vercel.app/hakkimizda
+          - listitem [ref=f1e266]:
+            - link "Contact" [ref=f1e267] [cursor=pointer]:
+              - /url: https://sun-accesories.vercel.app/iletisim
+          - listitem [ref=f1e268]:
+            - link "Shipping and delivery" [ref=f1e269] [cursor=pointer]:
+              - /url: https://sun-accesories.vercel.app/iletisim
+          - listitem [ref=f1e270]:
+            - link "Returns" [ref=f1e271] [cursor=pointer]:
+              - /url: https://sun-accesories.vercel.app/iletisim
+          - listitem [ref=f1e272]:
+            - link "Jewellery care" [ref=f1e273] [cursor=pointer]:
+              - /url: https://sun-accesories.vercel.app/iletisim
+      - generic [ref=f1e274]:
+        - heading "Stay in the loop" [level=3] [ref=f1e275]
+        - paragraph [ref=f1e276]: New pieces and notes from the bench, once a month.
+        - generic [ref=f1e277]:
+          - generic [ref=f1e278]: Your email address
+          - textbox "Your email address" [ref=f1e279]:
+            - /placeholder: ornek@eposta.com
+          - button "Join" [ref=f1e280]
+    - generic [ref=f1e281]:
+      - paragraph [ref=f1e282]: © 2026 Sun Accesories. All rights reserved.
+      - paragraph [ref=f1e283]:
+        - generic [ref=f1e284]: Terms of sale
+        - generic [ref=f1e285]: Privacy
+        - generic [ref=f1e286]: Cookies
