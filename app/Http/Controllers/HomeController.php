@@ -3,10 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Support\WhatsApp;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -21,29 +18,5 @@ class HomeController extends Controller
     public function about(): View
     {
         return view('pages.about');
-    }
-
-    public function contact(): View
-    {
-        return view('pages.contact', [
-            'whatsappUrl' => WhatsApp::link(__('pages.contact.whatsapp_message')),
-        ]);
-    }
-
-    public function sendContact(Request $request): RedirectResponse
-    {
-        $request->validate([
-            'name' => ['required', 'string', 'max:120'],
-            'email' => ['required', 'email', 'max:180'],
-            'subject' => ['required', 'string', 'max:160'],
-            'message' => ['required', 'string', 'min:10', 'max:2000'],
-        ], attributes: [
-            'name' => __('fields.name'),
-            'email' => __('fields.email'),
-            'subject' => __('fields.subject'),
-            'message' => __('fields.message'),
-        ]);
-
-        return back()->with('status', __('pages.contact.sent'));
     }
 }

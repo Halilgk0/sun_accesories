@@ -66,7 +66,6 @@ return [
         'enquire_text' => 'Her parça atölyede elde tamamlanıyor. Bize yaz; ölçü, kargo ve teslimatı birlikte planlayalım.',
         'enquire_text_sold_out' => 'Bu parça şu an tezgâhta yok. Yazarsan yeni üretime girdiğinde ilk sana haber veririz.',
         'enquire_cta' => 'Bu parça için yaz',
-        'form_cta' => 'Formla yaz',
         'whatsapp_note' => 'WhatsApp açılır ve mesaj hazır gelir. Göndermeden önce dilediğin gibi değiştirebilirsin.',
         'whatsapp_message' => 'Merhaba! :name ile ilgileniyorum, biraz bilgi alabilir miyim?'.'
 

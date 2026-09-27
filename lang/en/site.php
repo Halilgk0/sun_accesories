@@ -26,7 +26,7 @@ return [
     ],
 
     'actions' => [
-        'get_in_touch' => 'Get in touch',
+        'whatsapp' => 'Message us on WhatsApp',
         'browse' => 'Browse the collection',
         'close' => 'Close',
     ],
@@ -44,9 +44,7 @@ return [
         'all_products' => 'All pieces',
         'help' => 'Information',
         'atelier' => 'Our atelier',
-        'shipping' => 'Shipping and delivery',
-        'returns' => 'How to order',
-        'care' => 'Jewellery care',
+        'faq' => 'Frequently asked',
         'newsletter_title' => 'Stay in the loop',
         'newsletter_text' => 'New pieces and notes from the bench, once a month.',
         'newsletter_label' => 'Your email address',

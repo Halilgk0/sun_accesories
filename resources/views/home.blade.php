@@ -168,7 +168,7 @@
                 <p class="mt-3.5 max-w-[48ch] text-sm leading-relaxed text-white/85 sm:mt-5 sm:text-base">
                     {{ __('pages.home.visit_text') }}
                 </p>
-                <a href="{{ route('contact') }}" class="btn mt-6 bg-white text-bole hover:scale-105 sm:mt-8">
+                <a href="{{ $whatsappUrl ?: route('about') }}" @if($whatsappUrl) target="_blank" rel="noopener" @endif class="btn mt-6 bg-white text-bole hover:scale-105 sm:mt-8">
                     {{ __('pages.home.visit_cta') }}
                 </a>
             </div>
@@ -176,9 +176,9 @@
             {{-- Opening hours, in place of the old countdown --}}
             <dl class="grid grid-cols-1 gap-2 sm:gap-3">
                 @foreach ([
-                    [__('pages.contact.weekdays'), '09.00 – 18.00'],
-                    [__('pages.contact.saturday'), '11.00 – 16.00'],
-                    [__('pages.contact.sunday'), __('pages.contact.closed')],
+                    [__('pages.about.weekdays'), '09.00 – 18.00'],
+                    [__('pages.about.saturday'), '11.00 – 16.00'],
+                    [__('pages.about.sunday'), __('pages.about.closed')],
                 ] as [$day, $hours])
                     <div class="flex items-center justify-between rounded-xl border-2 border-white/25 bg-white/10 px-3.5 py-2.5 backdrop-blur-sm sm:rounded-2xl sm:px-5 sm:py-3.5">
                         <dt class="text-xs text-white/80 sm:text-sm">{{ $day }}</dt>

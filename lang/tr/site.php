@@ -26,7 +26,7 @@ return [
     ],
 
     'actions' => [
-        'get_in_touch' => 'İletişime geç',
+        'whatsapp' => 'WhatsApp’tan yaz',
         'browse' => 'Koleksiyonu gez',
         'close' => 'Kapat',
     ],
@@ -44,9 +44,7 @@ return [
         'all_products' => 'Tüm parçalar',
         'help' => 'Bilgi',
         'atelier' => 'Atölyemiz',
-        'shipping' => 'Kargo ve teslimat',
-        'returns' => 'Sipariş nasıl verilir?',
-        'care' => 'Takı bakımı',
+        'faq' => 'Sık sorulanlar',
         'newsletter_title' => 'Haberdar ol',
         'newsletter_text' => 'Yeni parçalar ve atölye günlüğü ayda bir kez posta kutunda.',
         'newsletter_label' => 'E-posta adresin',

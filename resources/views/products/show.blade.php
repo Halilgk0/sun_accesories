@@ -109,18 +109,11 @@
                                 {{ __('shop.product.enquire_cta') }}
                             </a>
                         @else
-                            <a href="{{ route('contact', ['urun' => $product->translated('name')]) }}"
+                            <a href="{{ route('about') }}"
                                class="btn btn-sun flex-1 py-3.5 sm:flex-none sm:px-8 sm:py-4">
-                                <svg class="size-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18v12H3zM3 7l9 6 9-6"/></svg>
                                 {{ __('shop.product.enquire_cta') }}
                             </a>
                         @endif
-
-                        <a href="{{ route('contact', ['urun' => $product->translated('name')]) }}"
-                           class="btn btn-outline flex-1 py-3.5 sm:flex-none sm:px-8 sm:py-4">
-                            <svg class="size-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18v12H3zM3 7l9 6 9-6"/></svg>
-                            {{ __('shop.product.form_cta') }}
-                        </a>
                     </div>
 
                     @if ($whatsappUrl)

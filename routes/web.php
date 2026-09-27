@@ -9,8 +9,6 @@ Route::post('/dil/{locale}', [LocaleController::class, 'update'])->name('locale.
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/hakkimizda', [HomeController::class, 'about'])->name('about');
-Route::get('/iletisim', [HomeController::class, 'contact'])->name('contact');
-Route::post('/iletisim', [HomeController::class, 'sendContact'])->name('contact.send');
 
 Route::get('/urunler', [ProductController::class, 'index'])->name('products.index');
 Route::get('/urun/{product}', [ProductController::class, 'show'])->name('products.show');

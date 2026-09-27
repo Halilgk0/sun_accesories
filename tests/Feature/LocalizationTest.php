@@ -86,13 +86,6 @@ it('finds a product by its English name while browsing in English', function () 
         ->assertDontSee('Butterfly Anklet');
 });
 
-it('validates in the language the visitor picked', function () {
-    $this->post(route('locale.update', 'en'));
-
-    $this->post(route('contact.send'), ['name' => '', 'email' => '', 'subject' => '', 'message' => ''])
-        ->assertSessionHasErrors(['email' => 'The Email field is required.']);
-});
-
 it('keeps seasonal copy out of the store', function () {
     Product::factory()->count(3)->create();
 

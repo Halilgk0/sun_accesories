@@ -4,32 +4,44 @@ use App\Models\Product;
 
 /**
  * This site shows the collection and hands the visitor to the atelier; it does
- * not take orders. These tests hold that line, so a checkout cannot creep back
- * in without someone deciding to put it there.
+ * not take orders, and it no longer offers a form that delivers nowhere. These
+ * tests hold that line, so neither a checkout nor a dead form can creep back in
+ * without someone deciding to put it there.
  */
 it('serves every page of the site', function () {
     Product::factory()->create(['slug' => 'ornek-parca']);
 
-    foreach (['home', 'products.index', 'about', 'contact'] as $name) {
+    foreach (['home', 'products.index', 'about'] as $name) {
         $this->get(route($name))->assertOk();
     }
 
     $this->get(route('products.show', 'ornek-parca'))->assertOk();
 });
 
-it('has no basket, checkout, account or sign-in routes', function () {
-    foreach (['/sepet', '/odeme', '/hesabim', '/giris', '/kayit', '/siparis/GN-000000-AAAAA'] as $path) {
+it('has no basket, checkout, account, sign-in or contact routes', function () {
+    foreach (['/sepet', '/odeme', '/hesabim', '/giris', '/kayit', '/siparis/GN-000000-AAAAA', '/iletisim'] as $path) {
         $this->get($path)->assertNotFound();
     }
 });
 
-it('points a product at the atelier instead of a basket', function () {
+it('accepts no submissions but the language switch', function () {
+    $posts = collect(app('router')->getRoutes())
+        ->filter(fn ($route) => in_array('POST', $route->methods(), true))
+        ->map->getName()
+        ->values()
+        ->all();
+
+    expect($posts)->toBe(['locale.update']);
+});
+
+it('points a product at WhatsApp instead of a basket', function () {
+    config(['contact.whatsapp' => '+90 532 111 22 33']);
+
     $product = Product::factory()->create(['slug' => 'lale-yuzuk', 'stock' => 5]);
 
     $response = $this->get(route('products.show', $product))->assertOk();
 
     $response->assertSee(__('shop.product.enquire_cta'));
-    $response->assertSee(route('contact', ['urun' => $product->translated('name')]));
     $response->assertDontSee('name="quantity"', escape: false);
     $response->assertDontSee('<form method="POST" action="'.url('/sepet'), escape: false);
 });
@@ -37,7 +49,7 @@ it('points a product at the atelier instead of a basket', function () {
 it('never invites a phone call', function () {
     $product = Product::factory()->create(['slug' => 'lale-yuzuk']);
 
-    foreach ([route('products.show', $product), route('contact'), route('home')] as $url) {
+    foreach ([route('products.show', $product), route('about'), route('home')] as $url) {
         $this->get($url)->assertOk()->assertDontSee('href="tel:', escape: false);
     }
 });
@@ -60,15 +72,26 @@ it('opens WhatsApp with the piece and its link already written out', function ()
     expect($content)->toContain($expected);
 });
 
-it('falls back to the contact form when no WhatsApp number is set', function () {
+it('offers WhatsApp from the header and the footer too', function () {
+    config(['contact.whatsapp' => '+90 532 111 22 33']);
+
+    $content = $this->get(route('home'))->assertOk()->getContent();
+
+    expect(substr_count($content, 'https://wa.me/905321112233'))->toBeGreaterThan(1);
+});
+
+it('falls back to the atelier when no WhatsApp number is set', function () {
     config(['contact.whatsapp' => null]);
 
     $product = Product::factory()->create(['slug' => 'lale-yuzuk']);
 
-    $content = $this->get(route('products.show', $product))->assertOk()->getContent();
+    // A missing number must never leave a dead button behind.
+    foreach ([route('products.show', $product), route('home')] as $url) {
+        $content = $this->get($url)->assertOk()->getContent();
 
-    expect($content)->not->toContain('wa.me');
-    expect($content)->toContain(route('contact', ['urun' => $product->translated('name')]));
+        expect($content)->not->toContain('wa.me');
+        expect($content)->toContain(route('about'));
+    }
 });
 
 it('offers the atelier for a piece that is not on the bench', function () {
@@ -80,12 +103,15 @@ it('offers the atelier for a piece that is not on the bench', function () {
         ->assertSee(__('shop.product.out_of_stock'));
 });
 
-it('carries the product name into the contact form', function () {
-    Product::factory()->create(['slug' => 'papatya-kupe', 'name' => 'Papatya Küpe']);
-
-    $this->get(route('contact', ['urun' => 'Papatya Küpe']))
+it('keeps the address, opening hours and questions on the atelier page', function () {
+    // These used to live on the contact page; removing that page must not have
+    // taken them with it.
+    $this->get(route('about'))
         ->assertOk()
-        ->assertSee('value="Papatya Küpe"', escape: false);
+        ->assertSee(__('pages.about.address'))
+        ->assertSee(__('pages.about.hours_title'))
+        ->assertSee(__('pages.about.faq_title'))
+        ->assertSee(__('pages.about.faq_6_q'));
 });
 
 it('never leaves a raw translation key on the page', function () {
@@ -96,7 +122,6 @@ it('never leaves a raw translation key on the page', function () {
         route('products.index'),
         route('products.show', 'ornek-parca'),
         route('about'),
-        route('contact'),
     ];
 
     foreach (['tr', 'en'] as $locale) {

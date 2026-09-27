@@ -79,39 +79,18 @@ return [
         'visit_title' => 'Would you like to see the atelier?',
         'visit_text' => 'Our door is open on Saturdays between 11am and 4pm. Coffee is on us, and you can sit at the bench.',
         'visit_cta' => 'Book a visit',
-    ],
 
-    'contact' => [
-        'meta_title' => 'Contact',
-        'title' => 'Ask us anything, we answer quickly',
-        'lead' => 'Buying a piece, sizing, repairs or plain curiosity — we reply to all of it the same day.',
-
-        'form_title' => 'Send a message',
-        'form_lead' => 'On weekdays between 9am and 6pm we reply in about two hours.',
-        'name' => 'Full name',
-        'email' => 'Email',
-        'subject' => 'Subject',
-        'subject_placeholder' => 'Which piece are you asking about?',
-        'message' => 'Your message',
-        'message_placeholder' => 'Ask us anything…',
-        'submit' => 'Send the message',
-        'sent' => 'Your message reached us. We will reply within 24 hours.',
-
-        'subject_tracking' => 'I would like a piece',
-        'subject_returns' => 'Sizing',
-        'subject_repair' => 'Repair request',
-        'subject_product' => 'Something made to order',
-        'subject_visit' => 'Atelier visit',
-
-        'atelier' => 'Atelier',
+        'location_title' => 'Atelier',
+        'email_label' => 'Email',
         'address' => 'Alsancak Mah. Papatya Sok. No:7 D:3, Konak / İzmir',
-        'whatsapp_cta' => 'Message us on WhatsApp',
-        'whatsapp_message' => 'Hello! I would like to know more about your collection.',
+
         'hours_title' => 'Opening hours',
         'weekdays' => 'Monday – Friday',
         'saturday' => 'Saturday',
         'sunday' => 'Sunday',
         'closed' => 'Closed',
+
+        'whatsapp_message' => 'Hello! I would like to know more about your collection.',
 
         'faq_title' => 'Frequently asked',
         'faq_1_q' => 'How do I buy a piece?',

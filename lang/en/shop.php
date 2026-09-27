@@ -66,7 +66,6 @@ return [
         'enquire_text' => 'Every piece is finished by hand at the bench. Write to us and we will sort sizing, shipping and delivery together.',
         'enquire_text_sold_out' => 'This one is not on the bench right now. Write to us and you will be first to hear when it returns.',
         'enquire_cta' => 'Ask about this piece',
-        'form_cta' => 'Use the form',
         'whatsapp_note' => 'WhatsApp opens with the message ready. Change it however you like before you send it.',
         'whatsapp_message' => 'Hello! I am interested in the :name — could you tell me a bit more?'.'
 

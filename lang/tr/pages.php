@@ -79,39 +79,18 @@ return [
         'visit_title' => 'Atölyeyi görmek ister misin?',
         'visit_text' => 'Cumartesileri 11.00–16.00 arası kapımız açık. Kahve bizden, tezgâhın başına oturabilirsin.',
         'visit_cta' => 'Randevu al',
-    ],
 
-    'contact' => [
-        'meta_title' => 'İletişim',
-        'title' => 'Bir şey sor, hemen yanıtlayalım',
-        'lead' => 'Bir parçayı almak, ölçü sormak, onarım ya da sadece merak — hepsine aynı gün dönüyoruz.',
-
-        'form_title' => 'Mesaj gönder',
-        'form_lead' => 'Hafta içi 09.00–18.00 arası ortalama 2 saatte yanıtlıyoruz.',
-        'name' => 'Ad soyad',
-        'email' => 'E-posta',
-        'subject' => 'Konu',
-        'subject_placeholder' => 'Hangi parçayı soruyorsun?',
-        'message' => 'Mesajın',
-        'message_placeholder' => 'Ne sormak istersen…',
-        'submit' => 'Mesajı gönder',
-        'sent' => 'Mesajın bize ulaştı! En geç 24 saat içinde döneceğiz.',
-
-        'subject_tracking' => 'Bir parçayı almak istiyorum',
-        'subject_returns' => 'Ölçü ve beden',
-        'subject_repair' => 'Onarım talebi',
-        'subject_product' => 'Özel tasarım',
-        'subject_visit' => 'Atölye randevusu',
-
-        'atelier' => 'Atölye',
+        'location_title' => 'Atölye',
+        'email_label' => 'E-posta',
         'address' => 'Alsancak Mah. Papatya Sok. No:7 D:3, Konak / İzmir',
-        'whatsapp_cta' => 'WhatsApp’tan yaz',
-        'whatsapp_message' => 'Merhaba! Koleksiyonunuz hakkında bilgi almak istiyorum.',
+
         'hours_title' => 'Çalışma saatleri',
         'weekdays' => 'Pazartesi – Cuma',
         'saturday' => 'Cumartesi',
         'sunday' => 'Pazar',
         'closed' => 'Kapalı',
+
+        'whatsapp_message' => 'Merhaba! Koleksiyonunuz hakkında bilgi almak istiyorum.',
 
         'faq_title' => 'Sık sorulanlar',
         'faq_1_q' => 'Bir parçayı nasıl alabilirim?',
