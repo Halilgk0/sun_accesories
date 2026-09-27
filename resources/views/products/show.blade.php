@@ -88,45 +88,30 @@
 
                 <p class="mt-5 max-w-[56ch] text-sm leading-relaxed text-ink-soft sm:mt-7 sm:text-lg">{{ $product->translated('description') }}</p>
 
-                {{-- Add to cart --}}
-                @if ($product->isInStock())
-                    <div class="mt-6 flex flex-wrap items-center gap-2.5 sm:mt-9 sm:gap-3">
-                        <form method="POST" action="{{ route('cart.store', $product) }}" class="flex flex-1 flex-wrap items-center gap-2.5 sm:gap-3">
-                            @csrf
-
-                            <div data-quantity class="flex items-center gap-0.5 rounded-full border-2 border-paper-deep p-1 sm:gap-1 sm:p-1.5">
-                                <button type="button" data-step="-1" class="grid size-9 place-items-center rounded-full text-lg font-bold transition hover:bg-paper-warm sm:size-10 sm:text-xl" aria-label="{{ __('shop.product.decrease') }}">−</button>
-                                <label for="adet" class="sr-only">{{ __('shop.product.quantity') }}</label>
-                                <input id="adet" type="number" name="quantity" value="1" min="1" max="10"
-                                       class="w-10 bg-transparent text-center text-base font-bold tabular-nums focus:outline-none sm:w-12 sm:text-lg [&::-webkit-inner-spin-button]:appearance-none">
-                                <button type="button" data-step="1" class="grid size-9 place-items-center rounded-full text-lg font-bold transition hover:bg-paper-warm sm:size-10 sm:text-xl" aria-label="{{ __('shop.product.increase') }}">+</button>
-                            </div>
-
-                            <button type="submit" class="btn btn-sun flex-1 py-3.5 sm:flex-none sm:px-10 sm:py-4">
-                                {{ __('shop.card.add') }}
-                            </button>
-                        </form>
-
-                        @auth
-                            <form method="POST" action="{{ route('favorites.store', $product) }}" class="w-full sm:w-auto">
-                                @csrf
-                                <button type="submit" class="btn btn-outline w-full py-3.5 sm:w-auto sm:py-4" aria-label="{{ __('shop.card.favorite_add', ['name' => $product->translated('name')]) }}">
-                                    <svg class="size-4.5 sm:size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-9.6a4.3 4.3 0 0 1 7.5-2.8 4.3 4.3 0 0 1 7.5 2.8c0 5-7.5 9.6-7.5 9.6Z"/></svg>
-                                    {{ __('shop.product.favorite') }}
-                                </button>
-                            </form>
-                        @endauth
-                    </div>
-                @else
-                    <p class="tile mt-6 p-4 text-sm text-ink-soft sm:mt-9 sm:p-5">
-                        {{ __('shop.product.sold_out_text') }}
-                        <a href="{{ route('contact') }}" class="link-sun font-semibold text-bole">{{ __('shop.product.sold_out_link') }}</a>.
+                {{-- This is a catalogue, not a checkout: the piece is bought by
+                     talking to the atelier, so the page hands the visitor over
+                     with the product already named. --}}
+                <div class="tile mt-6 border-sun bg-sun-pale/30 p-4 sm:mt-9 sm:p-6">
+                    <p class="font-display text-lg sm:text-2xl">{{ __('shop.product.enquire_title') }}</p>
+                    <p class="mt-1.5 text-sm leading-relaxed text-ink-soft sm:mt-2">
+                        {{ $product->isInStock() ? __('shop.product.enquire_text') : __('shop.product.enquire_text_sold_out') }}
                     </p>
-                @endif
+
+                    <div class="mt-4 flex flex-wrap gap-2.5 sm:mt-5 sm:gap-3">
+                        <a href="{{ route('contact', ['urun' => $product->translated('name')]) }}" class="btn btn-sun flex-1 py-3.5 sm:flex-none sm:px-8 sm:py-4">
+                            <svg class="size-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18v12H3zM3 7l9 6 9-6"/></svg>
+                            {{ __('shop.product.enquire_cta') }}
+                        </a>
+                        <a href="tel:+902320000000" class="btn btn-outline flex-1 py-3.5 sm:flex-none sm:px-8 sm:py-4">
+                            <svg class="size-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1.1 1A16 16 0 0 1 4 5.1 1 1 0 0 1 5 4Z"/></svg>
+                            {{ __('shop.product.call_cta') }}
+                        </a>
+                    </div>
+                </div>
 
                 {{-- Care & shipping --}}
                 <div class="mt-7 space-y-2.5 sm:mt-10 sm:space-y-3">
-                    @foreach (['shipping', 'care', 'returns'] as $index => $key)
+                    @foreach (['howto', 'care', 'warranty'] as $index => $key)
                         <details class="tile group overflow-hidden p-0" @if($index === 0) open @endif>
                             <summary class="flex cursor-pointer items-center justify-between gap-3 p-4 text-sm font-semibold transition hover:bg-paper-warm sm:gap-4 sm:p-5 sm:text-base">
                                 {{ __('shop.product.'.$key.'_title') }}

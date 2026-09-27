@@ -34,7 +34,6 @@
                 @foreach (['necklace', 'earrings', 'ring'] as $category)
                     <li><a href="{{ route('products.index', ['kategori' => $category]) }}" class="transition hover:text-sun">{{ __('shop.categories.'.$category) }}</a></li>
                 @endforeach
-                <li><a href="{{ route('cart.index') }}" class="transition hover:text-sun">{{ __('site.actions.cart') }}</a></li>
             </ul>
         </div>
 

@@ -89,7 +89,7 @@ it('finds a product by its English name while browsing in English', function () 
 it('validates in the language the visitor picked', function () {
     $this->post(route('locale.update', 'en'));
 
-    $this->post(route('login.store'), ['email' => '', 'password' => ''])
+    $this->post(route('contact.send'), ['name' => '', 'email' => '', 'subject' => '', 'message' => ''])
         ->assertSessionHasErrors(['email' => 'The Email field is required.']);
 });
 

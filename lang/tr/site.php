@@ -4,7 +4,7 @@ return [
     'brand' => 'Sun Accesories',
     'brand_mark' => 'Sun',
     'brand_sub' => 'ACCESORIES',
-    'meta_description' => 'Sun Accesories — güneş ışığından ilham alan, elde üretilen günlük takılar. Kolye, küpe, bileklik, yüzük ve halhal.',
+    'meta_description' => 'Sun Accesories — güneş ışığından ilham alan, İzmir atölyesinde elde üretilen takılar. Kolye, küpe, bileklik, yüzük ve halhal.',
 
     'skip_to_content' => 'İçeriğe geç',
 
@@ -16,28 +16,19 @@ return [
         'aria' => 'Ana menü',
         'mobile_aria' => 'Mobil menü',
         'open' => 'Menüyü aç',
-        'close' => 'Menüyü kapat',
     ],
 
     'ticker' => [
-        'shipping' => '1.500 ₺ üzeri kargo bizden',
         'handmade' => 'Her takı İzmir atölyemizde elde tamamlanıyor',
-        'returns' => '14 gün içinde koşulsuz iade',
+        'atelier' => 'Cumartesileri atölyemiz ziyarete açık',
         'restock' => 'Yeni parçalar her ay tezgâhta',
+        'enquire' => 'Beğendiğin parça için bize yazman yeterli',
     ],
 
     'actions' => [
-        'login' => 'Giriş yap',
-        'register' => 'Hesap oluştur',
-        'logout' => 'Çıkış yap',
-        'account' => 'Hesabım',
-        'orders' => 'Siparişlerim',
-        'favorites' => 'Favorilerim',
-        'cart' => 'Sepetim',
-        'cart_aria' => 'Sepetim (:count ürün)',
-        'close' => 'Kapat',
+        'get_in_touch' => 'İletişime geç',
         'browse' => 'Koleksiyonu gez',
-        'continue_shopping' => 'Alışverişe devam et',
+        'close' => 'Kapat',
     ],
 
     'language' => [
@@ -49,12 +40,12 @@ return [
 
     'footer' => [
         'about' => 'Güneş ışığını takıya çeviriyoruz. Her parça İzmir\'deki küçük atölyemizde, gün ışığı masaya vururken elde tamamlanıyor.',
-        'shop' => 'Alışveriş',
-        'all_products' => 'Tüm koleksiyon',
-        'help' => 'Yardım',
+        'shop' => 'Koleksiyon',
+        'all_products' => 'Tüm parçalar',
+        'help' => 'Bilgi',
         'atelier' => 'Atölyemiz',
         'shipping' => 'Kargo ve teslimat',
-        'returns' => 'İade koşulları',
+        'returns' => 'Sipariş nasıl verilir?',
         'care' => 'Takı bakımı',
         'newsletter_title' => 'Haberdar ol',
         'newsletter_text' => 'Yeni parçalar ve atölye günlüğü ayda bir kez posta kutunda.',
@@ -62,7 +53,7 @@ return [
         'newsletter_button' => 'Katıl',
         'newsletter_done' => 'Listeye eklendin, ilk mektup yolda ☀️',
         'rights' => '© :year Sun Accesories. Tüm hakları saklıdır.',
-        'terms' => 'Mesafeli satış sözleşmesi',
+        'terms' => 'Kullanım koşulları',
         'privacy' => 'Gizlilik',
         'cookies' => 'Çerezler',
     ],

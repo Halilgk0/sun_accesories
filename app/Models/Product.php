@@ -5,7 +5,6 @@ namespace App\Models;
 use Database\Factories\ProductFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\App;
 
 class Product extends Model
@@ -29,18 +28,6 @@ class Product extends Model
     public function getRouteKeyName(): string
     {
         return 'slug';
-    }
-
-    /** @return HasMany<CartItem, $this> */
-    public function cartItems(): HasMany
-    {
-        return $this->hasMany(CartItem::class);
-    }
-
-    /** @return HasMany<Favorite, $this> */
-    public function favorites(): HasMany
-    {
-        return $this->hasMany(Favorite::class);
     }
 
     /**

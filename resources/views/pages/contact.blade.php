@@ -22,7 +22,7 @@
             <div>
                 <label for="name" class="label">{{ __('pages.contact.name') }}</label>
                 <input id="name" name="name" type="text" required autocomplete="name"
-                       value="{{ old('name', auth()->user()?->name) }}" class="field"
+                       value="{{ old('name') }}" class="field"
                        @if($errors->has('name')) aria-invalid="true" @endif>
                 @error('name') <p class="field-error">{{ $message }}</p> @enderror
             </div>
@@ -30,7 +30,7 @@
             <div>
                 <label for="email" class="label">{{ __('pages.contact.email') }}</label>
                 <input id="email" name="email" type="email" required autocomplete="email"
-                       value="{{ old('email', auth()->user()?->email) }}" class="field"
+                       value="{{ old('email') }}" class="field"
                        @if($errors->has('email')) aria-invalid="true" @endif>
                 @error('email') <p class="field-error">{{ $message }}</p> @enderror
             </div>
@@ -38,7 +38,7 @@
             <div class="sm:col-span-2">
                 <label for="subject" class="label">{{ __('pages.contact.subject') }}</label>
                 <input id="subject" name="subject" type="text" required list="konular"
-                       value="{{ old('subject') }}" placeholder="{{ __('pages.contact.subject_placeholder') }}" class="field"
+                       value="{{ old('subject', request()->string('urun')->toString()) }}" placeholder="{{ __('pages.contact.subject_placeholder') }}" class="field"
                        @if($errors->has('subject')) aria-invalid="true" @endif>
                 <datalist id="konular">
                     @foreach (['tracking', 'returns', 'repair', 'product', 'visit'] as $key)

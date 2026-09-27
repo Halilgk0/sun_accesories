@@ -171,34 +171,6 @@ function watchToasts() {
 }
 
 /* -------------------------------------------------------------------------
- * Quantity steppers — submit the surrounding form after a change.
- * ---------------------------------------------------------------------- */
-
-function watchQuantity() {
-    document.querySelectorAll('[data-quantity]').forEach((widget) => {
-        const input = widget.querySelector('input[type="number"]');
-        if (!input) return;
-
-        const min = Number(input.min || 1);
-        const max = Number(input.max || 99);
-        const autoSubmit = widget.hasAttribute('data-quantity-submit');
-
-        widget.querySelectorAll('[data-step]').forEach((button) => {
-            button.addEventListener('click', () => {
-                const next = Number(input.value) + Number(button.dataset.step);
-                input.value = String(Math.min(Math.max(next, min), max));
-                input.classList.add('animate-pop');
-                setTimeout(() => input.classList.remove('animate-pop'), 460);
-
-                if (autoSubmit) {
-                    input.form?.requestSubmit();
-                }
-            });
-        });
-    });
-}
-
-/* -------------------------------------------------------------------------
  * Mobile navigation
  * ---------------------------------------------------------------------- */
 
@@ -217,55 +189,6 @@ function watchMobileNav() {
     panel.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setOpen(false)));
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape' && !panel.hidden) setOpen(false);
-    });
-}
-
-/* -------------------------------------------------------------------------
- * Checkout: swap the payment panel, and format card input as it is typed.
- * ---------------------------------------------------------------------- */
-
-function watchPayment() {
-    const radios = document.querySelectorAll('[data-payment-option]');
-    if (!radios.length) return;
-
-    const sync = () => {
-        const selected = document.querySelector('[data-payment-option]:checked')?.value;
-
-        document.querySelectorAll('[data-payment-panel]').forEach((panel) => {
-            panel.hidden = panel.dataset.paymentPanel !== selected;
-        });
-
-        document.querySelectorAll('[data-payment-option]').forEach((radio) => {
-            radio.closest('label')?.classList.toggle('is-selected', radio.checked);
-        });
-    };
-
-    radios.forEach((radio) => radio.addEventListener('change', sync));
-    sync();
-
-    const cardNumber = document.querySelector('[data-card-number]');
-    cardNumber?.addEventListener('input', () => {
-        const digits = cardNumber.value.replace(/\D/g, '').slice(0, 16);
-        cardNumber.value = digits.replace(/(.{4})/g, '$1 ').trim();
-        document.querySelector('[data-card-preview-number]')?.replaceChildren(
-            document.createTextNode(cardNumber.value.padEnd(19, '•')),
-        );
-    });
-
-    const cardExpiry = document.querySelector('[data-card-expiry]');
-    cardExpiry?.addEventListener('input', () => {
-        const digits = cardExpiry.value.replace(/\D/g, '').slice(0, 4);
-        cardExpiry.value = digits.length > 2 ? `${digits.slice(0, 2)}/${digits.slice(2)}` : digits;
-        document.querySelector('[data-card-preview-expiry]')?.replaceChildren(
-            document.createTextNode(cardExpiry.value || 'AA/YY'),
-        );
-    });
-
-    const cardName = document.querySelector('[data-card-name]');
-    cardName?.addEventListener('input', () => {
-        document.querySelector('[data-card-preview-name]')?.replaceChildren(
-            document.createTextNode(cardName.value.toLocaleUpperCase('tr-TR') || 'AD SOYAD'),
-        );
     });
 }
 
@@ -289,57 +212,6 @@ function watchZoom() {
     });
 }
 
-/* -------------------------------------------------------------------------
- * Countdown to the end of the spring campaign
- * ---------------------------------------------------------------------- */
-
-function watchCountdown() {
-    const root = document.querySelector('[data-countdown]');
-    if (!root) return;
-
-    const deadline = new Date(root.dataset.countdown).getTime();
-    const slots = {
-        days: root.querySelector('[data-countdown-days]'),
-        hours: root.querySelector('[data-countdown-hours]'),
-        minutes: root.querySelector('[data-countdown-minutes]'),
-        seconds: root.querySelector('[data-countdown-seconds]'),
-    };
-
-    const pad = (value) => String(Math.max(value, 0)).padStart(2, '0');
-
-    const tick = () => {
-        const remaining = Math.max(deadline - Date.now(), 0);
-        const totalSeconds = Math.floor(remaining / 1000);
-
-        if (slots.days) slots.days.textContent = pad(Math.floor(totalSeconds / 86400));
-        if (slots.hours) slots.hours.textContent = pad(Math.floor((totalSeconds % 86400) / 3600));
-        if (slots.minutes) slots.minutes.textContent = pad(Math.floor((totalSeconds % 3600) / 60));
-        if (slots.seconds) slots.seconds.textContent = pad(totalSeconds % 60);
-    };
-
-    tick();
-    setInterval(tick, 1000);
-}
-
-/* -------------------------------------------------------------------------
- * Cart badge pop whenever the page reports a fresh count
- * ---------------------------------------------------------------------- */
-
-function popCartBadge() {
-    const badge = document.querySelector('[data-cart-count]');
-    if (!badge || !sessionStorage) return;
-
-    const current = badge.dataset.cartCount;
-    const previous = sessionStorage.getItem('cart-count');
-
-    if (previous !== null && previous !== current) {
-        badge.classList.add('animate-pop');
-        setTimeout(() => badge.classList.remove('animate-pop'), 500);
-    }
-
-    sessionStorage.setItem('cart-count', current);
-}
-
 /* ---------------------------------------------------------------------- */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -349,10 +221,6 @@ document.addEventListener('DOMContentLoaded', () => {
     watchParallax();
     watchTilt();
     watchToasts();
-    watchQuantity();
     watchMobileNav();
-    watchPayment();
     watchZoom();
-    watchCountdown();
-    popCartBadge();
 });

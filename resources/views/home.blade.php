@@ -45,13 +45,16 @@
                 <a href="{{ route('about') }}" class="btn btn-outline">{{ __('pages.home.cta_secondary') }}</a>
             </div>
 
-            {{-- Trust row --}}
+            {{-- What the atelier actually promises — no shipping or returns
+                 claims, because nothing is sold through this site. --}}
             <dl class="mt-9 grid max-w-md grid-cols-3 gap-4 border-t-2 border-paper-deep pt-5 sm:mt-12 sm:gap-6 sm:pt-7">
-                @foreach ([['1.500 ₺+', __('pages.home.trust_shipping')], ['14', __('pages.home.trust_returns')], ['2', __('pages.home.trust_warranty')]] as $index => [$value, $label])
+                @foreach ([
+                    ['5', __('pages.home.trust_pieces')],
+                    ['7', __('pages.home.trust_years')],
+                    ['2', __('pages.home.trust_warranty')],
+                ] as [$value, $label])
                     <div>
-                        <dt class="font-display text-lg text-bole sm:text-2xl">
-                            {{ $value }}@if ($index === 1) <span class="text-sm sm:text-lg">{{ app()->getLocale() === 'tr' ? 'gün' : 'days' }}</span>@elseif ($index === 2) <span class="text-sm sm:text-lg">{{ app()->getLocale() === 'tr' ? 'yıl' : 'years' }}</span>@endif
-                        </dt>
+                        <dt class="font-display text-lg text-bole sm:text-2xl">{{ $value }}</dt>
                         <dd class="mt-0.5 text-[0.7rem] leading-snug text-ink-soft sm:mt-1 sm:text-xs">{{ $label }}</dd>
                     </div>
                 @endforeach
@@ -160,26 +163,29 @@
 
         <div class="relative grid items-center gap-7 sm:gap-10 lg:grid-cols-[1.3fr_1fr]">
             <div>
-                <p class="mb-2.5 text-xs font-bold tracking-wide text-white/80 sm:mb-4 sm:text-sm">{{ __('pages.home.campaign_eyebrow') }}</p>
-                <h2 class="display-md max-w-[18ch] text-white">{{ __('pages.home.campaign_title') }}</h2>
+                <p class="mb-2.5 text-xs font-bold tracking-wide text-white/80 sm:mb-4 sm:text-sm">{{ __('pages.home.visit_eyebrow') }}</p>
+                <h2 class="display-md max-w-[18ch] text-white">{{ __('pages.home.visit_title') }}</h2>
                 <p class="mt-3.5 max-w-[48ch] text-sm leading-relaxed text-white/85 sm:mt-5 sm:text-base">
-                    {{ __('pages.home.campaign_text') }}
+                    {{ __('pages.home.visit_text') }}
                 </p>
-                <a href="{{ route('products.index') }}" class="btn mt-6 bg-white text-bole hover:scale-105 sm:mt-8">
-                    {{ __('pages.home.campaign_cta') }}
+                <a href="{{ route('contact') }}" class="btn mt-6 bg-white text-bole hover:scale-105 sm:mt-8">
+                    {{ __('pages.home.visit_cta') }}
                 </a>
             </div>
 
-            {{-- Countdown --}}
-            <div data-countdown="{{ now()->addDays(6)->toIso8601String() }}"
-                 class="grid grid-cols-4 gap-2 sm:gap-3">
-                @foreach ([['days', __('pages.home.countdown_days')], ['hours', __('pages.home.countdown_hours')], ['minutes', __('pages.home.countdown_minutes')], ['seconds', __('pages.home.countdown_seconds')]] as [$key, $label])
-                    <div class="rounded-xl border-2 border-white/25 bg-white/10 px-1 py-2.5 text-center backdrop-blur-sm sm:rounded-2xl sm:px-2 sm:py-4">
-                        <span data-countdown-{{ $key }} class="block font-display text-xl tabular-nums sm:text-4xl">00</span>
-                        <span class="mt-0.5 block text-[0.6rem] text-white/75 sm:mt-1 sm:text-[0.7rem]">{{ $label }}</span>
+            {{-- Opening hours, in place of the old countdown --}}
+            <dl class="grid grid-cols-1 gap-2 sm:gap-3">
+                @foreach ([
+                    [__('pages.contact.weekdays'), '09.00 – 18.00'],
+                    [__('pages.contact.saturday'), '11.00 – 16.00'],
+                    [__('pages.contact.sunday'), __('pages.contact.closed')],
+                ] as [$day, $hours])
+                    <div class="flex items-center justify-between rounded-xl border-2 border-white/25 bg-white/10 px-3.5 py-2.5 backdrop-blur-sm sm:rounded-2xl sm:px-5 sm:py-3.5">
+                        <dt class="text-xs text-white/80 sm:text-sm">{{ $day }}</dt>
+                        <dd class="font-display text-base tabular-nums sm:text-xl">{{ $hours }}</dd>
                     </div>
                 @endforeach
-            </div>
+            </dl>
         </div>
     </div>
 </section>

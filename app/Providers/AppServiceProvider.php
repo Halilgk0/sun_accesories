@@ -2,9 +2,6 @@
 
 namespace App\Providers;
 
-use App\Services\CartService;
-use App\Services\FavoriteService;
-use Illuminate\Contracts\View\View;
 use Illuminate\Support\Number;
 use Illuminate\Support\ServiceProvider;
 
@@ -15,8 +12,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(CartService::class);
-        $this->app->singleton(FavoriteService::class);
+        //
     }
 
     /**
@@ -25,10 +21,5 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Number::useLocale('tr');
-
-        // The header renders on every page and needs the live basket count.
-        view()->composer('layouts.app', function (View $view): void {
-            $view->with('cartCount', app(CartService::class)->count());
-        });
     }
 }
