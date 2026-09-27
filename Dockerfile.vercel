@@ -27,11 +27,17 @@ RUN npm run build
 
 # ---------------------------------------------------------------------------
 # Base PHP image
+#
+# Alpine rather than Debian: Vercel pulls this image into a fresh sandbox
+# whenever it adds an instance, and until that finishes the requests routed
+# there just wait. A smaller image is the only part of that we control.
+#
+# mysql is not installed — nothing here connects to one.
 # ---------------------------------------------------------------------------
-FROM dunglas/frankenphp:1-php8.4-bookworm AS base
+FROM dunglas/frankenphp:1-php8.4-alpine AS base
 
 RUN cp "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" \
-    && install-php-extensions intl zip pdo_sqlite pdo_pgsql pdo_mysql opcache
+    && install-php-extensions intl zip pdo_sqlite pdo_pgsql opcache
 
 WORKDIR /app
 
@@ -86,7 +92,10 @@ COPY --from=dependencies --chown=www-data:www-data /app /app
 COPY --chown=www-data:www-data Caddyfile /etc/frankenphp/Caddyfile
 COPY docker/vercel-entrypoint.sh /usr/local/bin/vercel-entrypoint.sh
 
-RUN setcap CAP_NET_BIND_SERVICE=+eip /usr/local/bin/frankenphp \
+# setcap lets the server bind port 80 without running as root. libcap carries
+# it and is not in the Alpine base, so install it here.
+RUN apk add --no-cache libcap \
+    && setcap CAP_NET_BIND_SERVICE=+eip /usr/local/bin/frankenphp \
     && chown -R www-data:www-data /config/caddy /data/caddy \
     && chmod +x /usr/local/bin/vercel-entrypoint.sh
 
