@@ -13,6 +13,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // Behind Vercel's edge every request arrives over plain HTTP with the
+        // original scheme in X-Forwarded-Proto. Without this Laravel builds
+        // http:// URLs and the secure session cookie is never sent back.
+        $middleware->trustProxies(at: '*');
+
         $middleware->web(append: [
             SetLocale::class,
         ]);
