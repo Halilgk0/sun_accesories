@@ -12,7 +12,6 @@ return [
         'home' => 'Anasayfa',
         'collection' => 'Koleksiyon',
         'atelier' => 'Atölye',
-        'contact' => 'İletişim',
         'aria' => 'Ana menü',
         'mobile_aria' => 'Mobil menü',
         'open' => 'Menüyü aç',

@@ -104,7 +104,7 @@
             @endif
         </p>
 
-        <div class="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3">
+        <div class="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3">
             @foreach ($products as $index => $product)
                 <x-product-card :product="$product" :delay="$index * 90" />
             @endforeach

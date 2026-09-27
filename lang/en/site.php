@@ -12,7 +12,6 @@ return [
         'home' => 'Home',
         'collection' => 'Collection',
         'atelier' => 'Atelier',
-        'contact' => 'Contact',
         'aria' => 'Main menu',
         'mobile_aria' => 'Mobile menu',
         'open' => 'Open menu',

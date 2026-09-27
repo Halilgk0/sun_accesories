@@ -96,14 +96,14 @@
 
 {{-- Where we are, and when the door is open --}}
 <section class="wrap pb-14 sm:pb-24">
-    <div class="grid gap-3.5 sm:gap-5 lg:grid-cols-2">
+    <div class="grid gap-4 sm:gap-5 lg:grid-cols-2">
 
-        <div class="space-y-3.5 sm:space-y-5">
+        <div class="space-y-4 sm:space-y-5">
             @foreach ([
                 [__('pages.about.location_title'), __('pages.about.address'), 'M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11Z'],
                 [__('pages.about.email_label'), 'merhaba@sunaccesories.com', 'M3 6h18v12H3zM3 7l9 6 9-6'],
             ] as $index => [$label, $value, $path])
-                <div class="tile reveal flex items-start gap-3 p-4 sm:gap-4 sm:p-6" style="--reveal-delay: {{ $index * 110 }}ms">
+                <div class="tile reveal flex items-start gap-3.5 p-5 sm:gap-4 sm:p-6" style="--reveal-delay: {{ $index * 110 }}ms">
                     <span class="grid size-9 shrink-0 place-items-center rounded-xl bg-sun-pale text-sun-deep sm:size-11 sm:rounded-2xl">
                         <svg class="size-4 sm:size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ $path }}"/></svg>
                     </span>
@@ -121,7 +121,7 @@
             </div>
             <dl class="divide-y-2 divide-paper-deep text-sm">
                 @foreach ([[__('pages.about.weekdays'), '09.00 – 18.00'], [__('pages.about.saturday'), '11.00 – 16.00'], [__('pages.about.sunday'), __('pages.about.closed')]] as [$day, $hours])
-                    <div class="flex justify-between p-3.5 sm:p-4">
+                    <div class="flex justify-between p-4">
                         <dt class="text-ink-soft">{{ $day }}</dt>
                         <dd class="font-semibold tabular-nums {{ $hours === __('pages.about.closed') ? 'text-bole' : '' }}">{{ $hours }}</dd>
                     </div>
@@ -135,16 +135,16 @@
 <section id="sss" class="wrap scroll-mt-28 pb-14 sm:pb-24">
     <h2 class="display-md mb-6 max-w-[20ch] sm:mb-10">{{ __('pages.about.faq_title') }}</h2>
 
-    <div class="grid gap-2.5 sm:gap-3 md:grid-cols-2">
+    <div class="grid gap-3 md:grid-cols-2">
         @foreach ([1, 2, 3, 4, 5, 6] as $i)
             <details class="tile group overflow-hidden p-0">
-                <summary class="flex cursor-pointer items-center justify-between gap-3 p-4 text-sm font-semibold transition hover:bg-paper-warm sm:gap-4 sm:p-5 sm:text-base">
+                <summary class="flex cursor-pointer items-center justify-between gap-3 p-4.5 text-sm font-semibold transition hover:bg-paper-warm sm:gap-4 sm:p-5 sm:text-base">
                     {{ __("pages.about.faq_{$i}_q") }}
                     <span class="grid size-6 shrink-0 place-items-center rounded-full bg-paper-warm transition-transform duration-300 group-open:rotate-45 sm:size-7">
                         <svg class="size-3 sm:size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
                     </span>
                 </summary>
-                <p class="px-4 pb-4 text-xs leading-relaxed text-ink-soft sm:px-5 sm:pb-5 sm:text-sm">{{ __("pages.about.faq_{$i}_a") }}</p>
+                <p class="px-4.5 pb-4.5 text-xs leading-relaxed text-ink-soft sm:px-5 sm:pb-5 sm:text-sm">{{ __("pages.about.faq_{$i}_a") }}</p>
             </details>
         @endforeach
     </div>

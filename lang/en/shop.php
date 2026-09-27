@@ -72,7 +72,7 @@ return [
 '.':url',
 
         'howto_title' => 'How to buy it',
-        'howto_text' => 'Press the WhatsApp button above: the message arrives ready, naming the piece and linking to it, and nothing is sent until you send it. The form works just as well. We settle sizing, timing and delivery together.',
+        'howto_text' => 'Press the WhatsApp button above: the message arrives ready, naming the piece and linking to it, and nothing is sent until you send it. We settle sizing, timing and delivery there together.',
         'care_title' => 'How to care for it',
         'care_text' => 'Wipe with a soft cloth after perfume or sea water. Keep it in its velvet pouch and the plating stays as it was on day one.',
         'warranty_title' => 'Materials and warranty',

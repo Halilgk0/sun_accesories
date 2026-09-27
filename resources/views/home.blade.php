@@ -99,12 +99,12 @@
     <div class="scallop-top absolute inset-x-0 top-0 h-6 bg-paper sm:h-10" aria-hidden="true"></div>
 
     <div class="wrap relative pt-5 sm:pt-8">
-        <div class="mb-7 flex flex-wrap items-end justify-between gap-3 sm:mb-12 sm:gap-5">
+        <div class="mb-7 flex flex-col items-start gap-3 sm:mb-12 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-5">
             <h2 class="display-md max-w-[14ch]">{{ __('pages.home.categories_title') }}</h2>
             <a href="{{ route('products.index') }}" class="link-sun text-xs font-semibold text-sun sm:text-sm">{{ __('pages.home.categories_all') }}</a>
         </div>
 
-        <div class="grid grid-cols-2 gap-2.5 sm:gap-4 md:grid-cols-5">
+        <div class="grid grid-cols-2 gap-3.5 sm:gap-4 md:grid-cols-5">
             @foreach ([
                 ['necklace', '☀', 'from-sun to-sun-deep'],
                 ['earrings', '✿', 'from-blush to-bole'],
@@ -137,7 +137,7 @@
             </p>
         </div>
 
-        <div class="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3">
+        <div class="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3">
             @foreach ($featured as $index => $product)
                 <x-product-card :product="$product" :delay="$index * 110" />
             @endforeach

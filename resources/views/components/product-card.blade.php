@@ -26,8 +26,8 @@
         </div>
     </div>
 
-    <div class="flex flex-1 flex-col p-3.5 sm:p-5">
-        <div class="mb-1.5 flex items-center justify-between gap-2 sm:mb-2 sm:gap-3">
+    <div class="flex flex-1 flex-col p-4 sm:p-5">
+        <div class="mb-2.5 flex items-center justify-between gap-2 sm:mb-2 sm:gap-3">
             <span class="text-[0.7rem] font-bold tracking-wide sm:text-xs" style="color: {{ $product->color_hex }}">{{ $product->categoryLabel() }}</span>
 
             <span class="flex items-center gap-1 text-[0.7rem] font-semibold text-ink-soft sm:text-xs">
@@ -37,17 +37,17 @@
             </span>
         </div>
 
-        <h3 class="font-display text-lg leading-tight sm:text-2xl">
+        <h3 class="font-display text-lg leading-snug sm:text-2xl sm:leading-tight">
             <a href="{{ route('products.show', $product) }}" class="transition-colors hover:text-bole after:absolute after:inset-0 after:content-['']">
                 {{ $product->translated('name') }}
             </a>
         </h3>
 
         @unless ($compact)
-            <p class="mt-1 text-xs leading-snug text-ink-soft sm:mt-1.5 sm:text-sm">{{ $product->translated('tagline') }}</p>
+            <p class="mt-1.5 text-xs leading-relaxed text-ink-soft sm:mt-1.5 sm:text-sm sm:leading-snug">{{ $product->translated('tagline') }}</p>
         @endunless
 
-        <div class="mt-auto flex flex-wrap items-end justify-between gap-x-3 gap-y-1 pt-3 sm:pt-5">
+        <div class="mt-auto flex flex-wrap items-end justify-between gap-x-3 gap-y-1.5 pt-4 sm:pt-5">
             <x-price :product="$product" />
 
             <span class="link-sun text-[0.7rem] font-semibold text-bole sm:text-xs">{{ __('shop.card.view') }} →</span>

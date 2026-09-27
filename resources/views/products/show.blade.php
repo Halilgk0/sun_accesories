@@ -39,15 +39,15 @@
                 <p class="mt-2.5 hidden text-center text-xs text-ink-faint sm:block">{{ __('shop.product.zoom_hint') }}</p>
 
                 {{-- Detail chips --}}
-                <dl class="mt-5 grid grid-cols-3 gap-2 sm:mt-7 sm:gap-3">
+                <dl class="mt-6 grid grid-cols-3 gap-2.5 sm:mt-7 sm:gap-3">
                     @foreach ([
                         [__('shop.product.material'), $product->translated('material')],
                         [__('shop.product.stone'), $product->translated('stone')],
                         [__('shop.product.category'), $product->categoryLabel()],
                     ] as [$label, $value])
-                        <div class="tile p-2.5 text-center sm:p-4">
+                        <div class="tile p-3 text-center sm:p-4">
                             <dt class="text-[0.65rem] text-ink-soft sm:text-xs">{{ $label }}</dt>
-                            <dd class="mt-0.5 text-xs font-semibold sm:mt-1 sm:text-sm">{{ $value }}</dd>
+                            <dd class="mt-1 text-xs leading-snug font-semibold sm:text-sm">{{ $value }}</dd>
                         </div>
                     @endforeach
                 </dl>
@@ -91,13 +91,13 @@
                 {{-- This is a catalogue, not a checkout: the piece is bought by
                      talking to the atelier, so the page hands the visitor over
                      with the product already named. --}}
-                <div class="tile mt-6 border-sun bg-sun-pale/30 p-4 sm:mt-9 sm:p-6">
+                <div class="tile mt-7 border-sun bg-sun-pale/30 p-5 sm:mt-9 sm:p-6">
                     <p class="font-display text-lg sm:text-2xl">{{ __('shop.product.enquire_title') }}</p>
-                    <p class="mt-1.5 text-sm leading-relaxed text-ink-soft sm:mt-2">
+                    <p class="mt-2 text-sm leading-relaxed text-ink-soft">
                         {{ $product->isInStock() ? __('shop.product.enquire_text') : __('shop.product.enquire_text_sold_out') }}
                     </p>
 
-                    <div class="mt-4 flex flex-wrap gap-2.5 sm:mt-5 sm:gap-3">
+                    <div class="mt-5 flex flex-wrap gap-2.5 sm:gap-3">
                         @if ($whatsappUrl)
                             {{-- Opens WhatsApp with the message ready to read over;
                                  it is only sent once the visitor presses send. --}}
@@ -117,21 +117,21 @@
                     </div>
 
                     @if ($whatsappUrl)
-                        <p class="mt-3 text-xs text-ink-soft sm:mt-4">{{ __('shop.product.whatsapp_note') }}</p>
+                        <p class="mt-4 text-xs leading-relaxed text-ink-soft">{{ __('shop.product.whatsapp_note') }}</p>
                     @endif
                 </div>
 
                 {{-- Care & shipping --}}
-                <div class="mt-7 space-y-2.5 sm:mt-10 sm:space-y-3">
+                <div class="mt-8 space-y-3 sm:mt-10">
                     @foreach (['howto', 'care', 'warranty'] as $index => $key)
                         <details class="tile group overflow-hidden p-0" @if($index === 0) open @endif>
-                            <summary class="flex cursor-pointer items-center justify-between gap-3 p-4 text-sm font-semibold transition hover:bg-paper-warm sm:gap-4 sm:p-5 sm:text-base">
+                            <summary class="flex cursor-pointer items-center justify-between gap-3 p-4.5 text-sm font-semibold transition hover:bg-paper-warm sm:gap-4 sm:p-5 sm:text-base">
                                 {{ __('shop.product.'.$key.'_title') }}
                                 <span class="grid size-6 shrink-0 place-items-center rounded-full bg-paper-warm transition-transform duration-300 group-open:rotate-45 sm:size-7">
                                     <svg class="size-3 sm:size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
                                 </span>
                             </summary>
-                            <p class="px-4 pb-4 text-xs leading-relaxed text-ink-soft sm:px-5 sm:pb-5 sm:text-sm">{{ __('shop.product.'.$key.'_text') }}</p>
+                            <p class="px-4.5 pb-4.5 text-xs leading-relaxed text-ink-soft sm:px-5 sm:pb-5 sm:text-sm">{{ __('shop.product.'.$key.'_text') }}</p>
                         </details>
                     @endforeach
                 </div>
@@ -146,7 +146,7 @@
         <div class="wrap">
             <h2 class="display-md mb-6 sm:mb-10">{{ __('shop.product.related') }}</h2>
 
-            <div class="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
+            <div class="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
                 @foreach ($related as $index => $item)
                     <x-product-card :product="$item" :delay="$index * 90" compact />
                 @endforeach

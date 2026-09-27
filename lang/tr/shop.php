@@ -72,7 +72,7 @@ return [
 '.':url',
 
         'howto_title' => 'Nasıl alınır?',
-        'howto_text' => 'Yukarıdaki WhatsApp düğmesine bas; mesaj parçanın adı ve bağlantısıyla hazır gelir, sen göndermeden hiçbir şey iletilmez. Formu tercih edersen o da olur. Ölçüyü, hazırlık süresini ve teslimatı birlikte netleştiririz.',
+        'howto_text' => 'Yukarıdaki WhatsApp düğmesine bas; mesaj parçanın adı ve bağlantısıyla hazır gelir, sen göndermeden hiçbir şey iletilmez. Ölçüyü, hazırlık süresini ve teslimatı orada birlikte netleştiririz.',
         'care_title' => 'Bakım önerisi',
         'care_text' => 'Parfüm ve deniz suyundan sonra yumuşak bir bezle sil. Kadife kesesinde sakla, kaplama yıllarca ilk günkü gibi kalsın.',
         'warranty_title' => 'Malzeme ve garanti',
