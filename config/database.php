@@ -89,15 +89,13 @@ return [
             // Managed Postgres add-ons inject their own connection string, so
             // fall back to the names Neon and Supabase use before giving up.
             //
-            // The direct endpoint is preferred over the pooled one: Neon pools
-            // with PgBouncer in transaction mode, which hands a later statement
-            // a different backend than the one that began the transaction. The
-            // order then fails with 25P02, "current transaction is aborted".
-            // This store's traffic is nowhere near needing the pooler.
+            // Go through the pooler. Each container instance opens its own
+            // connections, and the direct endpoint runs out of them under any
+            // concurrency at all: requests then hang instead of failing.
             'url' => env('DB_URL')
-                ?: env('DATABASE_URL_UNPOOLED')
                 ?: env('DATABASE_URL')
-                ?: env('POSTGRES_URL'),
+                ?: env('POSTGRES_URL')
+                ?: env('DATABASE_URL_UNPOOLED'),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '5432'),
             'database' => env('DB_DATABASE', 'laravel'),
@@ -108,6 +106,16 @@ return [
             'prefix_indexes' => true,
             'search_path' => 'public',
             'sslmode' => env('DB_SSLMODE', 'prefer'),
+
+            // The pooler runs PgBouncer in transaction mode, so a connection
+            // is handed back between statements and a server-side prepared
+            // statement is gone by the time the next query wants it. That
+            // surfaced as 25P02, "current transaction is aborted", whenever an
+            // order was placed. Sending the SQL inline instead keeps every
+            // statement self-contained, which is what transaction pooling needs.
+            'options' => [
+                PDO::ATTR_EMULATE_PREPARES => true,
+            ],
         ],
 
         'sqlsrv' => [
