@@ -31,7 +31,9 @@ class AppServiceProvider extends ServiceProvider
         // The product page passes its own, naming the piece being asked about.
         ViewFacade::composer(
             ['partials.header', 'partials.footer', 'home', 'pages.about'],
-            fn (View $view) => $view->with('whatsappUrl', WhatsApp::link(__('pages.about.whatsapp_message'))),
+            fn (View $view) => $view
+                ->with('whatsappUrl', WhatsApp::link(__('pages.about.whatsapp_message')))
+                ->with('whatsappNumber', WhatsApp::display()),
         );
     }
 }

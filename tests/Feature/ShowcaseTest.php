@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Product;
+use App\Support\WhatsApp;
 
 /**
  * This site shows the collection and hands the visitor to the atelier; it does
@@ -32,6 +33,33 @@ it('accepts no submissions but the language switch', function () {
         ->all();
 
     expect($posts)->toBe(['locale.update']);
+});
+
+it('asks the visitor for nothing, anywhere', function () {
+    Product::factory()->create(['slug' => 'ornek-parca']);
+
+    // No message box, no sign-up box: the site would only be throwing whatever
+    // it collected away, which is why the contact and newsletter forms went.
+    foreach ([route('home'), route('products.index'), route('products.show', 'ornek-parca'), route('about')] as $url) {
+        $content = $this->get($url)->assertOk()->getContent();
+
+        expect($content)->not->toContain('type="email"');
+        expect($content)->not->toContain('<textarea');
+        expect($content)->not->toContain('onsubmit');
+    }
+});
+
+it('prints the number the way a person reads it', function () {
+    config(['contact.whatsapp' => '+90 545 922 99 43']);
+
+    $this->get(route('home'))->assertOk()->assertSee('+90 545 922 99 43');
+
+    // A number from anywhere else is left alone rather than grouped by guesswork.
+    config(['contact.whatsapp' => '44 20 7946 0000']);
+    expect(WhatsApp::display())->toBe('+442079460000');
+
+    config(['contact.whatsapp' => null]);
+    expect(WhatsApp::display())->toBeNull();
 });
 
 it('points a product at WhatsApp instead of a basket', function () {

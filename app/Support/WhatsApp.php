@@ -30,4 +30,26 @@ class WhatsApp
 
         return 'https://wa.me/'.$number.'?text='.rawurlencode($message);
     }
+
+    /**
+     * The number as a person would read it, for printing on the page.
+     *
+     * Turkish mobiles are grouped the way they are written locally; any other
+     * country is left as a plain international number rather than split up by
+     * guesswork.
+     */
+    public static function display(): ?string
+    {
+        $number = self::number();
+
+        if ($number === null) {
+            return null;
+        }
+
+        if (preg_match('/^90(\d{3})(\d{3})(\d{2})(\d{2})$/', $number, $parts)) {
+            return '+90 '.$parts[1].' '.$parts[2].' '.$parts[3].' '.$parts[4];
+        }
+
+        return '+'.$number;
+    }
 }

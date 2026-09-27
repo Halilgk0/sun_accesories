@@ -50,20 +50,27 @@
             </ul>
         </div>
 
+        {{-- No sign-up box here: the site collects nothing, so the only thing
+             worth offering is the way to reach a person. --}}
         <div>
-            <h3 class="mb-2.5 font-display text-base text-sun sm:mb-3 sm:text-lg">{{ __('site.footer.newsletter_title') }}</h3>
+            <h3 class="mb-2.5 font-display text-base text-sun sm:mb-3 sm:text-lg">{{ __('site.footer.ask_title') }}</h3>
             <p class="mb-4 text-sm leading-relaxed text-paper-warm/70">
-                {{ __('site.footer.newsletter_text') }}
+                {{ __('site.footer.ask_text') }}
             </p>
-            <form class="flex gap-2" onsubmit="event.preventDefault(); this.reset(); this.nextElementSibling.hidden = false;">
-                <label for="bulten" class="sr-only">{{ __('site.footer.newsletter_label') }}</label>
-                <input id="bulten" type="email" required placeholder="ornek@eposta.com"
-                       class="min-w-0 flex-1 rounded-full border-2 border-paper-warm/20 bg-white/5 px-4 py-2.5 text-sm text-paper-warm placeholder:text-paper-warm/40 focus:border-sun focus:outline-none">
-                <button type="submit" class="shrink-0 rounded-full bg-sun px-4 py-2.5 text-sm font-bold text-ink transition hover:scale-105 hover:bg-white sm:px-5">
-                    {{ __('site.footer.newsletter_button') }}
-                </button>
-            </form>
-            <p hidden class="mt-3 text-sm font-semibold text-sun">{{ __('site.footer.newsletter_done') }}</p>
+
+            @if ($whatsappUrl)
+                <a href="{{ $whatsappUrl }}" target="_blank" rel="noopener"
+                   class="inline-flex items-center gap-2 rounded-full bg-sun px-5 py-2.5 text-sm font-bold text-ink transition hover:scale-105 hover:bg-white">
+                    <svg class="size-4.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.9 2.2c.1.2.1.4 0 .6l-.4.5-.3.4c-.1.1-.2.3 0 .6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6 0l.9-1c.2-.2.4-.2.6-.1l2.1 1c.3.1.5.2.5.4.1.1.1.6-.1 1.3Z"/></svg>
+                    {{ __('site.actions.whatsapp') }}
+                </a>
+
+                @if ($whatsappNumber)
+                    <p class="mt-3 font-display text-lg text-paper-warm sm:text-xl">{{ $whatsappNumber }}</p>
+                @endif
+            @endif
+
+            <p class="mt-2 text-xs text-paper-warm/55">{{ __('site.footer.ask_hours') }}</p>
         </div>
     </div>
 
