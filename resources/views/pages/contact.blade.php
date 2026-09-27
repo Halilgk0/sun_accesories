@@ -65,7 +65,6 @@
         @foreach ([
             [__('pages.contact.atelier'), __('pages.contact.address'), 'M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11Z'],
             [__('pages.contact.email'), 'merhaba@sunaccesories.com', 'M3 6h18v12H3zM3 7l9 6 9-6'],
-            [__('pages.contact.phone'), '0232 000 00 00', 'M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1.1 1A16 16 0 0 1 4 5.1 1 1 0 0 1 5 4Z'],
         ] as $index => [$label, $value, $path])
             <div class="tile reveal flex items-start gap-3 p-4 sm:gap-4 sm:p-6" style="--reveal-delay: {{ $index * 110 }}ms">
                 <span class="grid size-9 shrink-0 place-items-center rounded-xl bg-sun-pale text-sun-deep sm:size-11 sm:rounded-2xl">
@@ -77,6 +76,20 @@
                 </span>
             </div>
         @endforeach
+
+        {{-- WhatsApp rather than a phone number: nobody here wants to be rung up. --}}
+        @if ($whatsappUrl)
+            <a href="{{ $whatsappUrl }}" target="_blank" rel="noopener"
+               class="tile reveal flex items-start gap-3 p-4 transition hover:border-sun sm:gap-4 sm:p-6" style="--reveal-delay: 330ms">
+                <span class="grid size-9 shrink-0 place-items-center rounded-xl bg-sun-pale text-sun-deep sm:size-11 sm:rounded-2xl">
+                    <svg class="size-4 sm:size-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.9 2.2c.1.2.1.4 0 .6l-.4.5-.3.4c-.1.1-.2.3 0 .6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6 0l.9-1c.2-.2.4-.2.6-.1l2.1 1c.3.1.5.2.5.4.1.1.1.6-.1 1.3Z"/></svg>
+                </span>
+                <span class="min-w-0">
+                    <strong class="block text-xs text-ink-soft sm:text-sm">WhatsApp</strong>
+                    <span class="mt-0.5 block text-sm font-semibold sm:text-base">{{ __('pages.contact.whatsapp_cta') }}</span>
+                </span>
+            </a>
+        @endif
 
         <div class="tile overflow-hidden">
             <div class="border-b-2 border-paper-deep p-4 sm:p-6">

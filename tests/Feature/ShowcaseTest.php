@@ -34,6 +34,43 @@ it('points a product at the atelier instead of a basket', function () {
     $response->assertDontSee('<form method="POST" action="'.url('/sepet'), escape: false);
 });
 
+it('never invites a phone call', function () {
+    $product = Product::factory()->create(['slug' => 'lale-yuzuk']);
+
+    foreach ([route('products.show', $product), route('contact'), route('home')] as $url) {
+        $this->get($url)->assertOk()->assertDontSee('href="tel:', escape: false);
+    }
+});
+
+it('opens WhatsApp with the piece and its link already written out', function () {
+    config(['contact.whatsapp' => '+90 532 111 22 33']);
+
+    $product = Product::factory()->create(['slug' => 'lale-yuzuk', 'name' => 'Lale Yüzük']);
+
+    $content = $this->get(route('products.show', $product))->assertOk()->getContent();
+
+    // Digits only, exactly as wa.me wants the number.
+    expect($content)->toContain('https://wa.me/905321112233?text=');
+
+    // Both the piece and the page it was seen on travel with the message.
+    $expected = rawurlencode(__('shop.product.whatsapp_message', [
+        'name' => 'Lale Yüzük',
+        'url' => route('products.show', $product),
+    ]));
+    expect($content)->toContain($expected);
+});
+
+it('falls back to the contact form when no WhatsApp number is set', function () {
+    config(['contact.whatsapp' => null]);
+
+    $product = Product::factory()->create(['slug' => 'lale-yuzuk']);
+
+    $content = $this->get(route('products.show', $product))->assertOk()->getContent();
+
+    expect($content)->not->toContain('wa.me');
+    expect($content)->toContain(route('contact', ['urun' => $product->translated('name')]));
+});
+
 it('offers the atelier for a piece that is not on the bench', function () {
     $product = Product::factory()->outOfStock()->create(['slug' => 'tukenmis']);
 

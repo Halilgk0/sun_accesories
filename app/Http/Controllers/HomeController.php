@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Support\WhatsApp;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -24,7 +25,9 @@ class HomeController extends Controller
 
     public function contact(): View
     {
-        return view('pages.contact');
+        return view('pages.contact', [
+            'whatsappUrl' => WhatsApp::link(__('pages.contact.whatsapp_message')),
+        ]);
     }
 
     public function sendContact(Request $request): RedirectResponse

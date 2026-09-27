@@ -105,7 +105,8 @@ return [
 
         'atelier' => 'Atelier',
         'address' => 'Alsancak Mah. Papatya Sok. No:7 D:3, Konak / İzmir',
-        'phone' => 'Phone',
+        'whatsapp_cta' => 'Message us on WhatsApp',
+        'whatsapp_message' => 'Hello! I would like to know more about your collection.',
         'hours_title' => 'Opening hours',
         'weekdays' => 'Monday – Friday',
         'saturday' => 'Saturday',
@@ -114,7 +115,7 @@ return [
 
         'faq_title' => 'Frequently asked',
         'faq_1_q' => 'How do I buy a piece?',
-        'faq_1_a' => 'Use the "Ask about this piece" button on its page, or just call us. We will sort sizing, timing and delivery together.',
+        'faq_1_a' => 'Open the piece and press "Ask about this piece". WhatsApp opens with the message written out for you; send it when you are ready and we take it from there.',
         'faq_2_q' => 'What if the plating fades?',
         'faq_2_a' => 'The plating is covered for two years. If it fades, send it back and we replate it for free.',
         'faq_3_q' => 'Are the earrings suitable for sensitive ears?',

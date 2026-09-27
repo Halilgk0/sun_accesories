@@ -66,10 +66,14 @@ return [
         'enquire_text' => 'Every piece is finished by hand at the bench. Write to us and we will sort sizing, shipping and delivery together.',
         'enquire_text_sold_out' => 'This one is not on the bench right now. Write to us and you will be first to hear when it returns.',
         'enquire_cta' => 'Ask about this piece',
-        'call_cta' => 'Call us',
+        'form_cta' => 'Use the form',
+        'whatsapp_note' => 'WhatsApp opens with the message ready. Change it however you like before you send it.',
+        'whatsapp_message' => 'Hello! I am interested in the :name — could you tell me a bit more?'.'
+
+'.':url',
 
         'howto_title' => 'How to buy it',
-        'howto_text' => 'Write to us with the button above, or call. We settle sizing, how long it takes and delivery together, and sort payment at the same time.',
+        'howto_text' => 'Press the WhatsApp button above: the message arrives ready, naming the piece and linking to it, and nothing is sent until you send it. The form works just as well. We settle sizing, timing and delivery together.',
         'care_title' => 'How to care for it',
         'care_text' => 'Wipe with a soft cloth after perfume or sea water. Keep it in its velvet pouch and the plating stays as it was on day one.',
         'warranty_title' => 'Materials and warranty',

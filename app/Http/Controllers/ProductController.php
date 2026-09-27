@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Support\WhatsApp;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -45,9 +46,17 @@ class ProductController extends Controller
 
     public function show(Product $product): View
     {
+        // The enquiry opens WhatsApp with this already typed out, naming the
+        // piece and linking back to the page the visitor is standing on.
+        $enquiry = __('shop.product.whatsapp_message', [
+            'name' => $product->translated('name'),
+            'url' => route('products.show', $product),
+        ]);
+
         return view('products.show', [
             'product' => $product,
             'related' => Product::where('id', '!=', $product->id)->inRandomOrder()->take(4)->get(),
+            'whatsappUrl' => WhatsApp::link($enquiry),
         ]);
     }
 }

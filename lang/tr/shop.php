@@ -66,10 +66,14 @@ return [
         'enquire_text' => 'Her parça atölyede elde tamamlanıyor. Bize yaz; ölçü, kargo ve teslimatı birlikte planlayalım.',
         'enquire_text_sold_out' => 'Bu parça şu an tezgâhta yok. Yazarsan yeni üretime girdiğinde ilk sana haber veririz.',
         'enquire_cta' => 'Bu parça için yaz',
-        'call_cta' => 'Telefonla sor',
+        'form_cta' => 'Formla yaz',
+        'whatsapp_note' => 'WhatsApp açılır ve mesaj hazır gelir. Göndermeden önce dilediğin gibi değiştirebilirsin.',
+        'whatsapp_message' => 'Merhaba! :name ile ilgileniyorum, biraz bilgi alabilir miyim?'.'
+
+'.':url',
 
         'howto_title' => 'Nasıl alınır?',
-        'howto_text' => 'Yukarıdaki düğmeden bize yaz ya da telefonla ara. Ölçüyü, hazırlık süresini ve teslimatı birlikte netleştirir, ödemeyi de o sırada konuşuruz.',
+        'howto_text' => 'Yukarıdaki WhatsApp düğmesine bas; mesaj parçanın adı ve bağlantısıyla hazır gelir, sen göndermeden hiçbir şey iletilmez. Formu tercih edersen o da olur. Ölçüyü, hazırlık süresini ve teslimatı birlikte netleştiririz.',
         'care_title' => 'Bakım önerisi',
         'care_text' => 'Parfüm ve deniz suyundan sonra yumuşak bir bezle sil. Kadife kesesinde sakla, kaplama yıllarca ilk günkü gibi kalsın.',
         'warranty_title' => 'Malzeme ve garanti',
