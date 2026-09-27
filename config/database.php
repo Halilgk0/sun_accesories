@@ -88,7 +88,16 @@ return [
             'driver' => 'pgsql',
             // Managed Postgres add-ons inject their own connection string, so
             // fall back to the names Neon and Supabase use before giving up.
-            'url' => env('DB_URL', env('DATABASE_URL', env('POSTGRES_URL'))),
+            //
+            // The direct endpoint is preferred over the pooled one: Neon pools
+            // with PgBouncer in transaction mode, which hands a later statement
+            // a different backend than the one that began the transaction. The
+            // order then fails with 25P02, "current transaction is aborted".
+            // This store's traffic is nowhere near needing the pooler.
+            'url' => env('DB_URL')
+                ?: env('DATABASE_URL_UNPOOLED')
+                ?: env('DATABASE_URL')
+                ?: env('POSTGRES_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '5432'),
             'database' => env('DB_DATABASE', 'laravel'),
