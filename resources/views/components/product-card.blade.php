@@ -32,7 +32,7 @@
 
             <span class="flex items-center gap-1 text-[0.7rem] font-semibold text-ink-soft sm:text-xs">
                 <svg class="size-3 text-sun sm:size-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 2.9 6.3 6.8.8-5 4.7 1.3 6.8L12 17.3 6 20.6l1.3-6.8-5-4.7 6.8-.8L12 2Z"/></svg>
-                {{ number_format((float) $product->rating, 1, ',', '') }}
+                {{ \App\Support\Format::number((float) $product->rating, 1) }}
                 <span class="hidden font-normal text-ink-faint sm:inline">({{ $product->review_count }})</span>
             </span>
         </div>

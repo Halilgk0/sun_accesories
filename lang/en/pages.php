@@ -43,6 +43,10 @@ return [
         'review_2' => 'I bought it for my mother and she cried when she opened the box. The hand-written card is such a lovely touch.',
         'review_3' => 'I wore the anklet at the beach and the salt water did nothing to it. The butterflies are so light.',
 
+        'review_1_piece' => 'Daisy Studs',
+        'review_2_piece' => 'Sunrise Necklace',
+        'review_3_piece' => 'Butterfly Anklet',
+
         'cta_title' => 'Carry a little light today',
         'cta_text' => 'Five pieces, endless combinations. When you see the one, write to us and we will take it from there.',
         'cta_button' => 'Open the collection',

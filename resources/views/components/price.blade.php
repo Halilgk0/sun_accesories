@@ -9,12 +9,12 @@
 
 <p {{ $attributes->merge(['class' => 'flex flex-wrap items-baseline gap-x-2 gap-y-0.5']) }}>
     <span class="font-display {{ $sizes[$size] }} font-semibold tabular-nums">
-        {{ number_format((float) $product->price, 2, ',', '.') }} ₺
+        {{ \App\Support\Format::price((float) $product->price) }}
     </span>
 
     @if ($product->isOnSale())
         <span class="text-xs text-ink-faint line-through tabular-nums sm:text-sm">
-            {{ number_format((float) $product->compare_at_price, 2, ',', '.') }} ₺
+            {{ \App\Support\Format::price((float) $product->compare_at_price) }}
         </span>
     @endif
 </p>

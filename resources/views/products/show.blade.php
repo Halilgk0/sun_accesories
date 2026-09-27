@@ -69,7 +69,7 @@
                                 <svg class="size-3.5 sm:size-4" viewBox="0 0 24 24" fill="{{ $i < round($product->rating) ? 'currentColor' : 'none' }}" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m12 2 2.9 6.3 6.8.8-5 4.7 1.3 6.8L12 17.3 6 20.6l1.3-6.8-5-4.7 6.8-.8L12 2Z"/></svg>
                             @endfor
                         </span>
-                        <span class="text-xs font-semibold sm:text-sm">{{ number_format((float) $product->rating, 1, ',', '') }}</span>
+                        <span class="text-xs font-semibold sm:text-sm">{{ \App\Support\Format::number((float) $product->rating, 1) }}</span>
                         <span class="text-xs text-ink-soft sm:text-sm">{{ __('shop.product.reviews', ['count' => $product->review_count]) }}</span>
                     </span>
 

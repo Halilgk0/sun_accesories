@@ -142,6 +142,18 @@ it('keeps the address, opening hours and questions on the atelier page', functio
         ->assertSee(__('pages.about.faq_6_q'));
 });
 
+it('writes prices the way each language writes numbers', function () {
+    // The price stays in lira either way, but 1.150,00 reads as a fraction to
+    // someone on the English pages.
+    Product::factory()->create(['slug' => 'lale-yuzuk', 'price' => 1150, 'compare_at_price' => null]);
+
+    $this->post(route('locale.update', 'tr'));
+    $this->get(route('products.show', 'lale-yuzuk'))->assertOk()->assertSee('1.150,00 ₺');
+
+    $this->post(route('locale.update', 'en'));
+    $this->get(route('products.show', 'lale-yuzuk'))->assertOk()->assertSee('1,150.00 ₺');
+});
+
 it('never leaves a raw translation key on the page', function () {
     Product::factory()->create(['slug' => 'ornek-parca']);
 

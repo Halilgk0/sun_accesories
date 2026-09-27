@@ -43,6 +43,10 @@ return [
         'review_2' => 'Anneme aldım, kutusunu açtığında ağladı. El yazısı kart detayı çok tatlı.',
         'review_3' => 'Halhalı sahilde taktım, tuzlu sudan hiç etkilenmedi. Kelebekler çok hafif.',
 
+        'review_1_piece' => 'Papatya Küpe',
+        'review_2_piece' => 'Gün Doğumu Kolye',
+        'review_3_piece' => 'Kelebek Halhal',
+
         'cta_title' => 'Bugün biraz ışık taşı',
         'cta_text' => 'Beş parça, sonsuz kombin. Beğendiğini gördüğünde bize yaz; gerisini birlikte hallederiz.',
         'cta_button' => 'Koleksiyonu aç',

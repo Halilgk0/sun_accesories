@@ -81,7 +81,7 @@
                     <img src="{{ asset($chip->image_path) }}" alt="" width="72" height="72" class="size-12 shrink-0 rounded-xl object-cover sm:size-16 sm:rounded-2xl">
                     <span class="min-w-0">
                         <span class="block font-display text-sm leading-tight sm:text-lg">{{ $chip->translated('name') }}</span>
-                        <span class="block text-xs font-semibold text-bole sm:text-sm">{{ number_format((float) $chip->price, 0, ',', '.') }} ₺</span>
+                        <span class="block text-xs font-semibold text-bole sm:text-sm">{{ \App\Support\Format::price((float) $chip->price, 0) }}</span>
                     </span>
                 </a>
             @endif
@@ -239,9 +239,9 @@
 
         <div class="grid gap-3.5 sm:gap-6 md:grid-cols-3">
             @foreach ([
-                [__('pages.home.review_1'), 'Elif K.', 'Papatya Küpe', '#F7E7B4'],
-                [__('pages.home.review_2'), 'Merve T.', 'Gün Doğumu Kolye', '#F2A007'],
-                [__('pages.home.review_3'), 'Zeynep A.', 'Kelebek Halhal', '#4FC3C9'],
+                [__('pages.home.review_1'), 'Elif K.', __('pages.home.review_1_piece'), '#F7E7B4'],
+                [__('pages.home.review_2'), 'Merve T.', __('pages.home.review_2_piece'), '#F2A007'],
+                [__('pages.home.review_3'), 'Zeynep A.', __('pages.home.review_3_piece'), '#4FC3C9'],
             ] as $index => [$quote, $name, $product, $color])
                 <figure class="reveal tile tile-raised flex flex-col p-5 sm:p-7"
                         style="--reveal-delay: {{ $index * 120 }}ms">
