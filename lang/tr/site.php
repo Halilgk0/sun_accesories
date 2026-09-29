@@ -26,6 +26,7 @@ return [
 
     'actions' => [
         'instagram' => 'Instagram’dan yaz',
+        'instagram_profile' => 'Instagram sayfamız',
         'browse' => 'Koleksiyonu gez',
         'close' => 'Kapat',
     ],

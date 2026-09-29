@@ -28,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
             ['partials.header', 'partials.footer', 'home', 'pages.about'],
             fn (View $view) => $view
                 ->with('instagramUrl', Instagram::dmLink())
+                ->with('instagramProfile', Instagram::profileLink())
                 ->with('instagramHandle', Instagram::handle()),
         );
     }

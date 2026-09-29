@@ -113,6 +113,20 @@ it('opens the Instagram chat and hands over the piece to paste', function () {
     expect($content)->toContain('data-copy="'.$expected.'"');
 });
 
+it('offers the shop page as well as the inbox', function () {
+    config(['contact.instagram' => 'sun_accessoriess']);
+
+    $product = Product::factory()->create(['slug' => 'lale-yuzuk']);
+
+    // Writing and looking round are different intentions, so each gets a link.
+    foreach ([route('products.show', $product), route('home')] as $url) {
+        $content = $this->get($url)->assertOk()->getContent();
+
+        expect($content)->toContain('https://ig.me/m/sun_accessoriess');
+        expect($content)->toContain('https://www.instagram.com/sun_accessoriess');
+    }
+});
+
 it('offers Instagram from the header and the footer too', function () {
     config(['contact.instagram' => 'sun_accessoriess']);
 

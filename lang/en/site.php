@@ -26,6 +26,7 @@ return [
 
     'actions' => [
         'instagram' => 'Message us on Instagram',
+        'instagram_profile' => 'Our Instagram',
         'browse' => 'Browse the collection',
         'close' => 'Close',
     ],

@@ -58,6 +58,7 @@ class ProductController extends Controller
             'product' => $product,
             'related' => Product::where('id', '!=', $product->id)->inRandomOrder()->take(4)->get(),
             'instagramUrl' => Instagram::dmLink(),
+            'instagramProfile' => Instagram::profileLink(),
             'enquiry' => $enquiry,
         ]);
     }

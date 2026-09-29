@@ -97,7 +97,7 @@
                         {{ $product->isInStock() ? __('shop.product.enquire_text') : __('shop.product.enquire_text_sold_out') }}
                     </p>
 
-                    <div class="mt-5 flex flex-wrap gap-2.5 sm:gap-3">
+                    <div class="mt-5 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:gap-3">
                         @if ($instagramUrl)
                             {{-- Instagram takes no message in the URL, so the click
                                  puts the enquiry on the clipboard and the link opens
@@ -106,14 +106,23 @@
                             <a href="{{ $instagramUrl }}" target="_blank" rel="noopener"
                                data-copy="{{ $enquiry }}"
                                data-copied="{{ __('shop.product.enquiry_copied') }}"
-                               class="btn btn-sun flex-1 py-3.5 sm:flex-none sm:px-8 sm:py-4">
+                               class="btn btn-sun py-3.5 sm:px-8 sm:py-4">
                                 <x-instagram-icon class="size-5" />
                                 {{ __('shop.product.enquire_cta') }}
                             </a>
                         @else
                             <a href="{{ route('about') }}"
-                               class="btn btn-sun flex-1 py-3.5 sm:flex-none sm:px-8 sm:py-4">
+                               class="btn btn-sun py-3.5 sm:px-8 sm:py-4">
                                 {{ __('shop.product.enquire_cta') }}
+                            </a>
+                        @endif
+
+                        @if ($instagramProfile)
+                            {{-- Some would rather look round the shop before writing. --}}
+                            <a href="{{ $instagramProfile }}" target="_blank" rel="noopener"
+                               class="btn btn-outline py-3.5 sm:px-8 sm:py-4">
+                                <x-instagram-icon class="size-4.5" />
+                                {{ __('site.actions.instagram_profile') }}
                             </a>
                         @endif
                     </div>
