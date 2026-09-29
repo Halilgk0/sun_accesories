@@ -25,7 +25,7 @@ return [
     ],
 
     'actions' => [
-        'whatsapp' => 'Message us on WhatsApp',
+        'instagram' => 'Message us on Instagram',
         'browse' => 'Browse the collection',
         'close' => 'Close',
     ],

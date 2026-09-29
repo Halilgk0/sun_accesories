@@ -63,10 +63,10 @@
 
             <x-language-switcher />
 
-            @if ($whatsappUrl)
-                <a href="{{ $whatsappUrl }}" target="_blank" rel="noopener" class="btn btn-quiet hidden lg:inline-flex">
-                    <svg class="size-4.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.9 2.2c.1.2.1.4 0 .6l-.4.5-.3.4c-.1.1-.2.3 0 .6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6 0l.9-1c.2-.2.4-.2.6-.1l2.1 1c.3.1.5.2.5.4.1.1.1.6-.1 1.3Z"/></svg>
-                    {{ __('site.actions.whatsapp') }}
+            @if ($instagramUrl)
+                <a href="{{ $instagramUrl }}" target="_blank" rel="noopener" class="btn btn-quiet hidden lg:inline-flex">
+                    <x-instagram-icon class="size-4.5" />
+                    {{ __('site.actions.instagram') }}
                 </a>
             @endif
 
@@ -90,10 +90,10 @@
                 </a>
             @endforeach
 
-            @if ($whatsappUrl)
-                <a href="{{ $whatsappUrl }}" target="_blank" rel="noopener" class="btn btn-ink mt-3 py-3 text-sm">
-                    <svg class="size-4.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.9 2.2c.1.2.1.4 0 .6l-.4.5-.3.4c-.1.1-.2.3 0 .6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6 0l.9-1c.2-.2.4-.2.6-.1l2.1 1c.3.1.5.2.5.4.1.1.1.6-.1 1.3Z"/></svg>
-                    {{ __('site.actions.whatsapp') }}
+            @if ($instagramUrl)
+                <a href="{{ $instagramUrl }}" target="_blank" rel="noopener" class="btn btn-ink mt-3 py-3 text-sm">
+                    <x-instagram-icon class="size-4.5" />
+                    {{ __('site.actions.instagram') }}
                 </a>
             @endif
         </nav>

@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\Product;
-use App\Support\WhatsApp;
+use App\Support\Instagram;
 
 /**
  * This site shows the collection and hands the visitor to the atelier; it does
@@ -49,21 +49,34 @@ it('asks the visitor for nothing, anywhere', function () {
     }
 });
 
-it('prints the number the way a person reads it', function () {
-    config(['contact.whatsapp' => '+90 545 922 99 43']);
+it('reads the account however it was written down', function () {
+    // Whoever sets this is likely to paste a handle or the profile URL, and
+    // Instagram's own share link carries tracking on the end of it.
+    foreach ([
+        'sun_accessoriess',
+        '@sun_accessoriess',
+        'https://www.instagram.com/sun_accessoriess',
+        'https://www.instagram.com/sun_accessoriess?utm_source=ig_web_button_share_sheet&stkn=abc',
+    ] as $written) {
+        config(['contact.instagram' => $written]);
 
-    $this->get(route('home'))->assertOk()->assertSee('+90 545 922 99 43');
+        expect(Instagram::username())->toBe('sun_accessoriess');
+        expect(Instagram::dmLink())->toBe('https://ig.me/m/sun_accessoriess');
+        expect(Instagram::handle())->toBe('@sun_accessoriess');
+    }
 
-    // A number from anywhere else is left alone rather than grouped by guesswork.
-    config(['contact.whatsapp' => '44 20 7946 0000']);
-    expect(WhatsApp::display())->toBe('+442079460000');
-
-    config(['contact.whatsapp' => null]);
-    expect(WhatsApp::display())->toBeNull();
+    config(['contact.instagram' => null]);
+    expect(Instagram::dmLink())->toBeNull();
 });
 
-it('points a product at WhatsApp instead of a basket', function () {
-    config(['contact.whatsapp' => '+90 532 111 22 33']);
+it('prints the handle in the footer', function () {
+    config(['contact.instagram' => 'sun_accessoriess']);
+
+    $this->get(route('home'))->assertOk()->assertSee('@sun_accessoriess');
+});
+
+it('points a product at Instagram instead of a basket', function () {
+    config(['contact.instagram' => 'sun_accessoriess']);
 
     $product = Product::factory()->create(['slug' => 'lale-yuzuk', 'stock' => 5]);
 
@@ -82,42 +95,42 @@ it('never invites a phone call', function () {
     }
 });
 
-it('opens WhatsApp with the piece and its link already written out', function () {
-    config(['contact.whatsapp' => '+90 532 111 22 33']);
+it('opens the Instagram chat and hands over the piece to paste', function () {
+    config(['contact.instagram' => 'sun_accessoriess']);
 
     $product = Product::factory()->create(['slug' => 'lale-yuzuk', 'name' => 'Lale Yüzük']);
 
     $content = $this->get(route('products.show', $product))->assertOk()->getContent();
 
-    // Digits only, exactly as wa.me wants the number.
-    expect($content)->toContain('https://wa.me/905321112233?text=');
+    expect($content)->toContain('https://ig.me/m/sun_accessoriess');
 
-    // Both the piece and the page it was seen on travel with the message.
-    $expected = rawurlencode(__('shop.product.whatsapp_message', [
+    // Instagram cannot be given the message, so it rides on the element the
+    // click copies from, naming the piece and linking to the page.
+    $expected = e(__('shop.product.enquiry_message', [
         'name' => 'Lale Yüzük',
         'url' => route('products.show', $product),
     ]));
-    expect($content)->toContain($expected);
+    expect($content)->toContain('data-copy="'.$expected.'"');
 });
 
-it('offers WhatsApp from the header and the footer too', function () {
-    config(['contact.whatsapp' => '+90 532 111 22 33']);
+it('offers Instagram from the header and the footer too', function () {
+    config(['contact.instagram' => 'sun_accessoriess']);
 
     $content = $this->get(route('home'))->assertOk()->getContent();
 
-    expect(substr_count($content, 'https://wa.me/905321112233'))->toBeGreaterThan(1);
+    expect(substr_count($content, 'https://ig.me/m/sun_accessoriess'))->toBeGreaterThan(1);
 });
 
-it('falls back to the atelier when no WhatsApp number is set', function () {
-    config(['contact.whatsapp' => null]);
+it('falls back to the atelier when no account is set', function () {
+    config(['contact.instagram' => null]);
 
     $product = Product::factory()->create(['slug' => 'lale-yuzuk']);
 
-    // A missing number must never leave a dead button behind.
+    // A missing account must never leave a dead button behind.
     foreach ([route('products.show', $product), route('home')] as $url) {
         $content = $this->get($url)->assertOk()->getContent();
 
-        expect($content)->not->toContain('wa.me');
+        expect($content)->not->toContain('ig.me');
         expect($content)->toContain(route('about'));
     }
 });

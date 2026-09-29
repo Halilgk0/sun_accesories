@@ -25,7 +25,7 @@ return [
     ],
 
     'actions' => [
-        'whatsapp' => 'WhatsApp’tan yaz',
+        'instagram' => 'Instagram’dan yaz',
         'browse' => 'Koleksiyonu gez',
         'close' => 'Kapat',
     ],

@@ -94,11 +94,9 @@ return [
         'sunday' => 'Pazar',
         'closed' => 'Kapalı',
 
-        'whatsapp_message' => 'Merhaba! Koleksiyonunuz hakkında bilgi almak istiyorum.',
-
         'faq_title' => 'Sık sorulanlar',
         'faq_1_q' => 'Bir parçayı nasıl alabilirim?',
-        'faq_1_a' => 'Beğendiğin parçanın sayfasındaki "Bu parça için yaz" düğmesine bas. WhatsApp açılır ve mesaj senin için yazılmış gelir; hazır olduğunda gönder, gerisini birlikte hallederiz.',
+        'faq_1_a' => 'Beğendiğin parçanın sayfasındaki "Bu parça için yaz" düğmesine bas. Mesaj panona kopyalanır ve Instagram sohbetimiz açılır; yapıştırıp gönder, gerisini birlikte hallederiz.',
         'faq_2_q' => 'Kaplama solarsa ne olur?',
         'faq_2_a' => 'İki yıl kaplama garantimiz var. Solduysa gönder, ücretsiz yeniliyoruz.',
         'faq_3_q' => 'Küpeler hassas kulağa uygun mu?',

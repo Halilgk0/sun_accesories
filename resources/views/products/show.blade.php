@@ -98,14 +98,16 @@
                     </p>
 
                     <div class="mt-5 flex flex-wrap gap-2.5 sm:gap-3">
-                        @if ($whatsappUrl)
-                            {{-- Opens WhatsApp with the message ready to read over;
-                                 it is only sent once the visitor presses send. --}}
-                            <a href="{{ $whatsappUrl }}" target="_blank" rel="noopener"
+                        @if ($instagramUrl)
+                            {{-- Instagram takes no message in the URL, so the click
+                                 puts the enquiry on the clipboard and the link opens
+                                 the conversation for the visitor to paste it into.
+                                 Without JavaScript the chat still opens. --}}
+                            <a href="{{ $instagramUrl }}" target="_blank" rel="noopener"
+                               data-copy="{{ $enquiry }}"
+                               data-copied="{{ __('shop.product.enquiry_copied') }}"
                                class="btn btn-sun flex-1 py-3.5 sm:flex-none sm:px-8 sm:py-4">
-                                <svg class="size-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                    <path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.9 2.2c.1.2.1.4 0 .6l-.4.5-.3.4c-.1.1-.2.3 0 .6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6 0l.9-1c.2-.2.4-.2.6-.1l2.1 1c.3.1.5.2.5.4.1.1.1.6-.1 1.3Z"/>
-                                </svg>
+                                <x-instagram-icon class="size-5" />
                                 {{ __('shop.product.enquire_cta') }}
                             </a>
                         @else
@@ -116,8 +118,10 @@
                         @endif
                     </div>
 
-                    @if ($whatsappUrl)
-                        <p class="mt-4 text-xs leading-relaxed text-ink-soft">{{ __('shop.product.whatsapp_note') }}</p>
+                    @if ($instagramUrl)
+                        <p data-copy-status aria-live="polite" class="mt-4 text-xs leading-relaxed text-ink-soft">
+                            {{ __('shop.product.enquiry_note') }}
+                        </p>
                     @endif
                 </div>
 

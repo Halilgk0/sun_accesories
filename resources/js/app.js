@@ -212,6 +212,31 @@ function watchZoom() {
     });
 }
 
+/* ----------------------------------------------------------------------
+ * Instagram takes no message in its link, so the enquiry is put on the
+ * clipboard as the conversation opens and the visitor pastes it in. The
+ * anchor navigates on its own; nothing here blocks or delays it, so a
+ * blocked clipboard or a browser without the API still opens the chat.
+ * ---------------------------------------------------------------------- */
+
+function watchEnquiryCopy() {
+    document.querySelectorAll('[data-copy]').forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+            const status = document.querySelector('[data-copy-status]');
+
+            navigator.clipboard?.writeText(trigger.dataset.copy)
+                .then(() => {
+                    if (!status) return;
+                    status.textContent = trigger.dataset.copied;
+                    status.classList.add('font-semibold', 'text-yaprak');
+                })
+                .catch(() => {
+                    /* Clipboard refused; the chat is open, they can type. */
+                });
+        });
+    });
+}
+
 /* ---------------------------------------------------------------------- */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -223,4 +248,5 @@ document.addEventListener('DOMContentLoaded', () => {
     watchToasts();
     watchMobileNav();
     watchZoom();
+    watchEnquiryCopy();
 });

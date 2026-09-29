@@ -168,7 +168,7 @@
                 <p class="mt-3.5 max-w-[48ch] text-sm leading-relaxed text-white/85 sm:mt-5 sm:text-base">
                     {{ __('pages.home.visit_text') }}
                 </p>
-                <a href="{{ $whatsappUrl ?: route('about') }}" @if($whatsappUrl) target="_blank" rel="noopener" @endif class="btn mt-6 bg-white text-bole hover:scale-105 sm:mt-8">
+                <a href="{{ $instagramUrl ?: route('about') }}" @if($instagramUrl) target="_blank" rel="noopener" @endif class="btn mt-6 bg-white text-bole hover:scale-105 sm:mt-8">
                     {{ __('pages.home.visit_cta') }}
                 </a>
             </div>

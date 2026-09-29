@@ -94,11 +94,9 @@ return [
         'sunday' => 'Sunday',
         'closed' => 'Closed',
 
-        'whatsapp_message' => 'Hello! I would like to know more about your collection.',
-
         'faq_title' => 'Frequently asked',
         'faq_1_q' => 'How do I buy a piece?',
-        'faq_1_a' => 'Open the piece and press "Ask about this piece". WhatsApp opens with the message written out for you; send it when you are ready and we take it from there.',
+        'faq_1_a' => 'Open the piece and press "Ask about this piece". The message is copied to your clipboard and our Instagram chat opens; paste it, send it, and we take it from there.',
         'faq_2_q' => 'What if the plating fades?',
         'faq_2_a' => 'The plating is covered for two years. If it fades, send it back and we replate it for free.',
         'faq_3_q' => 'Are the earrings suitable for sensitive ears?',

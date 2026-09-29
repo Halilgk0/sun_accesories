@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Support\WhatsApp;
+use App\Support\Instagram;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -46,9 +46,10 @@ class ProductController extends Controller
 
     public function show(Product $product): View
     {
-        // The enquiry opens WhatsApp with this already typed out, naming the
-        // piece and linking back to the page the visitor is standing on.
-        $enquiry = __('shop.product.whatsapp_message', [
+        // Instagram cannot be handed the message, so the page copies this to
+        // the clipboard as it opens the conversation and the visitor pastes
+        // it. It names the piece and links back to the page they came from.
+        $enquiry = __('shop.product.enquiry_message', [
             'name' => $product->translated('name'),
             'url' => route('products.show', $product),
         ]);
@@ -56,7 +57,8 @@ class ProductController extends Controller
         return view('products.show', [
             'product' => $product,
             'related' => Product::where('id', '!=', $product->id)->inRandomOrder()->take(4)->get(),
-            'whatsappUrl' => WhatsApp::link($enquiry),
+            'instagramUrl' => Instagram::dmLink(),
+            'enquiry' => $enquiry,
         ]);
     }
 }
