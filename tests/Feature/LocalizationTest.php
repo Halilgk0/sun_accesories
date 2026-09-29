@@ -34,6 +34,51 @@ it('rejects a language it does not serve', function () {
     expect(session('locale'))->toBeNull();
 });
 
+it('serves English when the address asks for it, with nothing in the session', function () {
+    $this->get(route('home', ['dil' => 'en']))
+        ->assertOk()
+        ->assertSee('Collection')
+        ->assertSee('Home');
+});
+
+it('remembers a language asked for in the address, so later links stay in it', function () {
+    $this->get(route('home', ['dil' => 'en']))->assertOk();
+
+    expect(session('locale'))->toBe('en');
+
+    $this->get(route('home'))->assertOk()->assertSee('Collection');
+});
+
+it('lets the address outrank a language already chosen in the session', function () {
+    $this->post(route('locale.update', 'tr'));
+
+    $this->get(route('home', ['dil' => 'en']))->assertOk()->assertSee('Collection');
+});
+
+it('ignores a language in the address that it does not serve', function () {
+    $this->get(route('home', ['dil' => 'de']))->assertOk()->assertSee('Koleksiyon');
+
+    expect(session('locale'))->toBeNull();
+});
+
+it('switches away from a language the address is still asking for', function () {
+    // Arriving on ?dil=en and then pressing TR has to end in Turkish: the
+    // redirect drops the parameter rather than handing it back.
+    $this->get(route('home', ['dil' => 'en']))->assertOk();
+
+    $this->from(route('home', ['dil' => 'en']))
+        ->post(route('locale.update', 'tr'))
+        ->assertRedirect(route('home'));
+
+    $this->get(route('home'))->assertOk()->assertSee('Koleksiyon');
+});
+
+it('keeps the visitor’s other query parameters when it drops the language one', function () {
+    $this->from(route('products.index', ['kategori' => 'ring', 'dil' => 'en']))
+        ->post(route('locale.update', 'tr'))
+        ->assertRedirect(route('products.index', ['kategori' => 'ring']));
+});
+
 it('shows English product copy once English is picked', function () {
     $product = Product::factory()->create([
         'slug' => 'test-parca',
