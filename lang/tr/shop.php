@@ -67,7 +67,7 @@ return [
         'enquire_text_sold_out' => 'Bu parça şu an tezgâhta yok. Yazarsan yeni üretime girdiğinde ilk sana haber veririz.',
         'enquire_cta' => 'Bu parça için yaz',
         'enquiry_note' => 'Mesaj panona kopyalanır, Instagram sohbetimiz açılır. Yapıştır, dilediğin gibi değiştir, sonra gönder.',
-        'enquiry_copied' => 'Mesaj kopyalandı — Instagram’da yapıştırman yeterli.',
+        'enquiry_copied' => 'Mesaj kopyalandı. Instagram’da yazı kutusuna basılı tut, “Yapıştır”a dokun ve gönder.',
         'enquiry_message' => 'Merhaba! :name ile ilgileniyorum, biraz bilgi alabilir miyim?'.'
 
 '.':url',

@@ -67,7 +67,7 @@ return [
         'enquire_text_sold_out' => 'This one is not on the bench right now. Write to us and you will be first to hear when it returns.',
         'enquire_cta' => 'Ask about this piece',
         'enquiry_note' => 'The message is copied to your clipboard and our Instagram chat opens. Paste it, change it however you like, then send it.',
-        'enquiry_copied' => 'Message copied — just paste it into Instagram.',
+        'enquiry_copied' => 'Message copied. In Instagram, hold down the message box, tap “Paste” and send.',
         'enquiry_message' => 'Hello! I am interested in the :name — could you tell me a bit more?'.'
 
 '.':url',
