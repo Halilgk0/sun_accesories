@@ -170,3 +170,16 @@ it('can always reach the setup step, even with the schema behind', function () {
     // there would be no way back in.
     $this->get(adminPath('kurulum'))->assertOk()->assertSee(__('admin.setup_run'));
 });
+
+it('serves a photograph without a cookie, so the edge can keep it', function () {
+    $image = Image::create([
+        'filename' => 'bros.jpg', 'mime' => 'image/jpeg',
+        'bytes' => 3, 'contents' => base64_encode('abc'),
+    ]);
+
+    // No CDN caches a response that carries Set-Cookie, and the session
+    // middleware attaches one to everything it touches.
+    $response = $this->get('/'.$image->path())->assertOk();
+
+    expect($response->headers->get('set-cookie'))->toBeNull();
+});

@@ -9,16 +9,40 @@ use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ProductController;
 use App\Http\Middleware\ForceTurkishLocale;
 use App\Http\Middleware\RequireAdminPassword;
+use App\Http\Middleware\SetLocale;
+use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
+use Illuminate\Cookie\Middleware\EncryptCookies;
+use Illuminate\Foundation\Http\Middleware\PreventRequestForgery;
+use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Route;
+use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 Route::post('/dil/{locale}', [LocaleController::class, 'update'])->name('locale.update');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/hakkimizda', [HomeController::class, 'about'])->name('about');
 
-// Photographs the atelier uploaded. They live in the database, so this is the
-// only way to reach them; the response carries a long cache lifetime.
-Route::get('/gorsel/{image}', [ImageController::class, 'show'])->name('images.show');
+/*
+ * Photographs the atelier uploaded. They live in the database, so this is the
+ * only way to reach them.
+ *
+ * Deliberately outside the session middleware: those add a Set-Cookie to every
+ * response, and no CDN will cache a response that carries one — which would
+ * have left the long cache lifetime below doing nothing and woken PHP for
+ * every thumbnail on the page. Model binding is kept; nothing else is needed,
+ * since the bytes are public and the route reads no session and takes no
+ * input.
+ */
+Route::get('/gorsel/{image}', [ImageController::class, 'show'])
+    ->withoutMiddleware([
+        EncryptCookies::class,
+        AddQueuedCookiesToResponse::class,
+        StartSession::class,
+        ShareErrorsFromSession::class,
+        PreventRequestForgery::class,
+        SetLocale::class,
+    ])
+    ->name('images.show');
 
 Route::get('/urunler', [ProductController::class, 'index'])->name('products.index');
 Route::get('/urun/{product}', [ProductController::class, 'show'])->name('products.show');
