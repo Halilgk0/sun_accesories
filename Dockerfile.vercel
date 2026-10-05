@@ -71,8 +71,13 @@ RUN mkdir -p \
     # Only the caches that do not bake in runtime environment values. Config is
     # deliberately left uncached so APP_KEY and the database credentials are
     # read when the container starts, not when the image is built.
-    && php artisan view:cache \
-    && php artisan route:cache
+    #
+    # Routes are left uncached for the same reason: the catalogue editor is
+    # registered at the path ADMIN_PATH names, so a cached route table would
+    # freeze that path at build time — changing it, or setting it for the
+    # first time, would silently leave the panel at 404 until someone thought
+    # to rebuild. Fourteen routes cost almost nothing to register per request.
+    && php artisan view:cache
 
 # A migrated and seeded SQLite database is baked into the image so the store has
 # something to serve before a managed Postgres is attached. The throwaway key is
