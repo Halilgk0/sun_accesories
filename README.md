@@ -1,3 +1,117 @@
+# Sun Accesories
+
+İzmir'deki atölyenin takı vitrini. Sipariş almaz, ödeme almaz, ziyaretçiden
+hiçbir bilgi istemez — parçaları gösterir ve ilgilenen kişiyi Instagram'dan
+yazmaya yönlendirir.
+
+**Canlı adres:** https://sun-accesories.vercel.app
+
+---
+
+## Katalog paneline nasıl girilir
+
+Ürünleri ve kategorileri değiştirdiğin yer. Sitenin hiçbir yerinden bağlantı
+verilmez, arama motorlarına kapalıdır; yalnızca adresini bilen bulur.
+
+### 1. Adrese git
+
+```
+https://sun-accesories.vercel.app/atolye-9da59c40bdd67f
+```
+
+Bu adresi tarayıcına yer imi olarak kaydet. Uzun ve rastgele olması kasıtlı:
+panelin saklı kalmasının ilk yarısı bu.
+
+> Adresi unutursan: Vercel → **sun-accesories** → Settings → Environment
+> Variables → `ADMIN_PATH` değişkenindedir. Sitenin adresinin sonuna eklersin.
+
+### 2. Şifreyi gir
+
+Karşına **"Katalog yönetimi"** ekranı çıkar. Şifreyi yaz, **Gir**'e bas.
+
+Şifre bu dosyada **yazmaz** ve yazmamalı: README her kopyada, her yedekte ve
+git geçmişinde kalıcı olarak durur. Şifreni bir parola yöneticisinde sakla.
+
+> Şifreyi kaybedersen geri okuyamazsın — Vercel'de "sensitive" olarak
+> saklanıyor. Bu durumda aşağıdaki **Şifreyi değiştirmek** adımlarını izleyip
+> yenisini koyarsın.
+
+Yanlış şifre girersen uyarır. Dakikada 5 denemeden fazlasına izin verilmez.
+
+### 3. İşini yap
+
+Giriş yapınca **Katalog** listesi açılır. Her satırda parçanın fotoğrafı,
+adı, kategorisi, fiyatı ve stoğu görünür.
+
+| Yapmak istediğin | Nereye basarsın |
+| --- | --- |
+| Yeni parça eklemek | Sağ üstteki **Yeni parça ekle** |
+| Bir parçayı değiştirmek | Satırdaki **Düzenle** |
+| Bir parçayı kaldırmak | Satırdaki **Sil** (önce onay sorar, geri alınamaz) |
+| Parçanın sitedeki hâlini görmek | Satırdaki **Sayfasını aç** |
+| Kategori eklemek / düzenlemek | Üstteki **Kategoriler** |
+
+**Fotoğraf:** düzenleme ekranındaki *Fotoğraf yükle* alanından telefonundan ya
+da bilgisayarından seçersin (en fazla 4 MB · JPG, PNG, WEBP, AVIF). Seçer
+seçmez önizlemede görünür. İstersen daha önce yüklediğin fotoğraflardan da
+seçebilirsin.
+
+**Adres alanı:** yayındaki bir parçanın adresini değiştirirsen o parçaya giden
+bütün bağlantılar kırılır. Form bu yüzden yayındaki parçalarda adresi
+kendiliğinden değiştirmez.
+
+**Kategori silme:** içinde parça olan kategori silinemez. Önce o parçaları
+başka bir kategoriye taşıman gerekir.
+
+### 4. Çıkarken
+
+Sağ üstteki **Çık**'a bas. Özellikle ortak ya da başkasının bilgisayarından
+girdiysen bunu atlama.
+
+---
+
+## Şifreyi değiştirmek
+
+1. Vercel → **sun-accesories** → Settings → Environment Variables
+2. `ADMIN_PASSWORD` satırında **Edit**
+3. Yeni şifreyi yaz, kaydet
+4. Deployments → en üstteki yayında `⋯` → **Redeploy**
+
+Değişiklik ancak yeniden yayından sonra geçerli olur. Aynı yoldan `ADMIN_PATH`
+ile panelin adresini de değiştirebilirsin.
+
+---
+
+## Yeni yayın sonrası: "Veritabanını hazırla"
+
+Veritabanı yapısını değiştiren bir güncelleme çıktığında site, yeni tablolar
+oluşturulana kadar hata verir. Düzeltmesi tek adım:
+
+1. Panele gir
+2. Üstteki **Veritabanını hazırla**ya bas
+
+Bu işlemi birden çok kez çalıştırmak zararsızdır; mevcut parçaların silinmez.
+
+> Neden otomatik değil: Vercel'de yayın ile trafik arasında bir ara adım yok.
+> Bunu konteyner açılışına koymak, açılışı bekleyen isteklerin zaman aşımına
+> uğramasına yol açıyordu.
+
+---
+
+## Ortam değişkenleri
+
+Vercel → Settings → Environment Variables altında tanımlı.
+
+| Değişken | Ne işe yarar |
+| --- | --- |
+| `ADMIN_PATH` | Panelin adresi. Boş bırakılırsa panel hiç var olmaz. |
+| `ADMIN_PASSWORD` | Panelin şifresi. Boş bırakılırsa panel açılmaz. |
+| `CONTACT_INSTAGRAM` | "Bu parça için yaz" düğmesinin açtığı hesap (yalnızca kullanıcı adı). |
+| `DB_CONNECTION` | `pgsql` — Neon Postgres. |
+| `DATABASE_URL` | Neon entegrasyonunun kendi eklediği bağlantı bilgisi. |
+
+---
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
