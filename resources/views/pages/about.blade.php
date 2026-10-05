@@ -18,9 +18,6 @@
                  width="1600" height="1200" class="aspect-4/3 w-full object-cover">
         </div>
 
-        <div class="absolute -right-2 -bottom-5 rotate-3 rounded-xl border-2 border-ink bg-sun px-3.5 py-2 shadow-[4px_4px_0_var(--color-ink)] sm:-right-4 sm:-bottom-8 sm:rounded-2xl sm:px-5 sm:py-3 sm:shadow-[5px_5px_0_var(--color-ink)]">
-            <p class="font-display text-base text-ink sm:text-xl">{{ __('pages.about.location') }}</p>
-        </div>
     </div>
 
     <div class="reveal" style="--reveal-delay: 140ms">
@@ -94,40 +91,34 @@
     </div>
 </section>
 
-{{-- Where we are, and when the door is open --}}
+{{-- How to reach a person. No address and no opening hours: the atelier is
+     not a shop to walk into, and where it is is nobody's business. --}}
 <section class="wrap pb-14 sm:pb-24">
     <div class="grid gap-4 sm:gap-5 lg:grid-cols-2">
 
-        <div class="space-y-4 sm:space-y-5">
-            @foreach ([
-                [__('pages.about.location_title'), __('pages.about.address'), 'M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11Z'],
-                [__('pages.about.email_label'), 'merhaba@sunaccesories.com', 'M3 6h18v12H3zM3 7l9 6 9-6'],
-            ] as $index => [$label, $value, $path])
-                <div class="tile reveal flex items-start gap-3.5 p-5 sm:gap-4 sm:p-6" style="--reveal-delay: {{ $index * 110 }}ms">
-                    <span class="grid size-9 shrink-0 place-items-center rounded-xl bg-sun-pale text-sun-deep sm:size-11 sm:rounded-2xl">
-                        <svg class="size-4 sm:size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ $path }}"/></svg>
-                    </span>
-                    <span class="min-w-0">
-                        <strong class="block text-xs text-ink-soft sm:text-sm">{{ $label }}</strong>
-                        <span class="mt-0.5 block text-sm font-semibold break-words sm:text-base">{{ $value }}</span>
-                    </span>
-                </div>
-            @endforeach
+        <div class="tile reveal flex items-start gap-3.5 p-5 sm:gap-4 sm:p-6">
+            <span class="grid size-9 shrink-0 place-items-center rounded-xl bg-sun-pale text-sun-deep sm:size-11 sm:rounded-2xl">
+                <svg class="size-4 sm:size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18v12H3zM3 7l9 6 9-6"/></svg>
+            </span>
+            <span class="min-w-0">
+                <strong class="block text-xs text-ink-soft sm:text-sm">{{ __('pages.about.email_label') }}</strong>
+                <span class="mt-0.5 block text-sm font-semibold break-words sm:text-base">merhaba@sunaccesories.com</span>
+            </span>
         </div>
 
-        <div class="tile overflow-hidden">
-            <div class="border-b-2 border-paper-deep p-4 sm:p-6">
-                <h2 class="font-display text-lg sm:text-2xl">{{ __('pages.about.hours_title') }}</h2>
-            </div>
-            <dl class="divide-y-2 divide-paper-deep text-sm">
-                @foreach ([[__('pages.about.weekdays'), '09.00 – 18.00'], [__('pages.about.saturday'), '11.00 – 16.00'], [__('pages.about.sunday'), __('pages.about.closed')]] as [$day, $hours])
-                    <div class="flex justify-between p-4">
-                        <dt class="text-ink-soft">{{ $day }}</dt>
-                        <dd class="font-semibold tabular-nums {{ $hours === __('pages.about.closed') ? 'text-bole' : '' }}">{{ $hours }}</dd>
-                    </div>
-                @endforeach
-            </dl>
-        </div>
+        @if ($instagramProfile)
+            <a href="{{ $instagramProfile }}" target="_blank" rel="noopener"
+               class="tile reveal flex items-start gap-3.5 p-5 transition hover:border-sun sm:gap-4 sm:p-6"
+               style="--reveal-delay: 110ms">
+                <span class="grid size-9 shrink-0 place-items-center rounded-xl bg-sun-pale text-sun-deep sm:size-11 sm:rounded-2xl">
+                    <x-instagram-icon class="size-4 sm:size-5" />
+                </span>
+                <span class="min-w-0">
+                    <strong class="block text-xs text-ink-soft sm:text-sm">Instagram</strong>
+                    <span class="mt-0.5 block text-sm font-semibold break-words sm:text-base">{{ $instagramHandle }}</span>
+                </span>
+            </a>
+        @endif
     </div>
 </section>
 

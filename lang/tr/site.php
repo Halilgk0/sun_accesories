@@ -4,7 +4,7 @@ return [
     'brand' => 'Sun Accesories',
     'brand_mark' => 'Sun',
     'brand_sub' => 'ACCESORIES',
-    'meta_description' => 'Sun Accesories — güneş ışığından ilham alan, İzmir atölyesinde elde üretilen takılar. Kolye, küpe, bileklik, yüzük ve halhal.',
+    'meta_description' => 'Sun Accesories — güneş ışığından ilham alan, atölyede elde üretilen takılar. Kolye, küpe, bileklik, yüzük ve halhal.',
 
     'skip_to_content' => 'İçeriğe geç',
 
@@ -18,8 +18,8 @@ return [
     ],
 
     'ticker' => [
-        'handmade' => 'Her takı İzmir atölyemizde elde tamamlanıyor',
-        'atelier' => 'Cumartesileri atölyemiz ziyarete açık',
+        'handmade' => 'Her takı atölyemizde elde tamamlanıyor',
+        'atelier' => 'Mine her yaprağa ince fırçayla elle sürülüyor',
         'restock' => 'Yeni parçalar her ay tezgâhta',
         'enquire' => 'Beğendiğin parça için bize yazman yeterli',
     ],
@@ -39,7 +39,7 @@ return [
     ],
 
     'footer' => [
-        'about' => 'Güneş ışığını takıya çeviriyoruz. Her parça İzmir\'deki küçük atölyemizde, gün ışığı masaya vururken elde tamamlanıyor.',
+        'about' => 'Güneş ışığını takıya çeviriyoruz. Her parça küçük atölyemizde, gün ışığı masaya vururken elde tamamlanıyor.',
         'shop' => 'Koleksiyon',
         'all_products' => 'Tüm parçalar',
         'help' => 'Bilgi',
@@ -47,7 +47,7 @@ return [
         'faq' => 'Sık sorulanlar',
         'ask_title' => 'Aklına takılan var mı?',
         'ask_text' => 'Ölçü, kaplama, hazırlık süresi, hediye paketi — ne sorarsan yaz. Hafta içi birkaç saat içinde dönüyoruz.',
-        'ask_hours' => 'Pzt – Cum 09.00 – 18.00 · Cmt 11.00 – 16.00',
+        'ask_hours' => 'Yanıt saatleri: Pzt – Cum 09.00 – 18.00',
         'rights' => '© :year Sun Accesories. Tüm hakları saklıdır.',
         'terms' => 'Kullanım koşulları',
         'privacy' => 'Gizlilik',

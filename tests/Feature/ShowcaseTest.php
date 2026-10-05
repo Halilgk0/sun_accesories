@@ -161,13 +161,11 @@ it('offers the atelier for a piece that is not on the bench', function () {
         ->assertSee(__('shop.product.out_of_stock'));
 });
 
-it('keeps the address, opening hours and questions on the atelier page', function () {
-    // These used to live on the contact page; removing that page must not have
-    // taken them with it.
+it('keeps the questions on the atelier page', function () {
+    // They moved here when the contact page went; the address and opening
+    // hours that came with them have since been taken off the site.
     $this->get(route('about'))
         ->assertOk()
-        ->assertSee(__('pages.about.address'))
-        ->assertSee(__('pages.about.hours_title'))
         ->assertSee(__('pages.about.faq_title'))
         ->assertSee(__('pages.about.faq_6_q'));
 });
@@ -215,5 +213,33 @@ it('makes no promise about shipping, returns or payment', function () {
         foreach (['Sepete ekle', 'Ödemeye geç', 'ücretsiz kargo', 'koşulsuz iade', 'indirim'] as $claim) {
             expect($content)->not->toContain($claim);
         }
+    }
+});
+
+it('says nowhere where the atelier is', function () {
+    Product::factory()->create(['slug' => 'ornek-parca']);
+
+    // The workshop is not a shop to walk into, and the address was a real
+    // one. Nothing on the site should place it on a map.
+    foreach (['tr', 'en'] as $locale) {
+        $this->post(route('locale.update', $locale));
+
+        foreach ([route('home'), route('products.index'), route('products.show', 'ornek-parca'), route('about')] as $url) {
+            $content = $this->get($url)->assertOk()->getContent();
+
+            foreach (['Alsancak', 'Papatya Sok', 'Konak', 'İzmir', 'Izmir'] as $place) {
+                expect($content)->not->toContain($place);
+            }
+        }
+    }
+});
+
+it('invites nobody to visit', function () {
+    // An invitation without an address only prompts the question it cannot
+    // answer, so the whole framing went with it.
+    $content = $this->get(route('about'))->assertOk()->getContent();
+
+    foreach (['Randevu al', 'Çalışma saatleri', 'kapımız açık', 'Book a visit', 'Opening hours'] as $phrase) {
+        expect($content)->not->toContain($phrase);
     }
 });

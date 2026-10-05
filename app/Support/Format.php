@@ -5,8 +5,8 @@ namespace App\Support;
 /**
  * Writes numbers the way the visitor's language writes them.
  *
- * Prices stay in lira whichever language is showing — the atelier is in İzmir
- * and charges in lira — but "1.150,00" reads as a fraction to someone on the
+ * Prices stay in lira whichever language is showing — that is what the
+ * atelier charges in — but "1.150,00" reads as a fraction to someone on the
  * English pages, so the separators follow the locale rather than the currency.
  */
 class Format

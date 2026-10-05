@@ -30,7 +30,7 @@ return [
 
     'promises' => [
         'shipping_title' => 'Elde üretim',
-        'shipping_text' => 'Her parça İzmir atölyemizde, siparişe özel tamamlanıyor.',
+        'shipping_text' => 'Her parça atölyemizde, siparişe özel tamamlanıyor.',
         'returns_title' => 'Cilde dost',
         'returns_text' => 'Nikelsiz gövde, hassas ciltler için hipoalerjenik kaplama.',
         'warranty_title' => '2 yıl garanti',

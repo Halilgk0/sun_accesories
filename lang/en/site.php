@@ -4,7 +4,7 @@ return [
     'brand' => 'Sun Accesories',
     'brand_mark' => 'Sun',
     'brand_sub' => 'ACCESORIES',
-    'meta_description' => 'Sun Accesories — handmade jewellery drawn from sunlight, finished by hand in our İzmir atelier. Necklaces, earrings, bracelets, rings and anklets.',
+    'meta_description' => 'Sun Accesories — handmade jewellery drawn from sunlight, finished by hand at our bench. Necklaces, earrings, bracelets, rings and anklets.',
 
     'skip_to_content' => 'Skip to content',
 
@@ -18,8 +18,8 @@ return [
     ],
 
     'ticker' => [
-        'handmade' => 'Every piece is finished by hand in our İzmir atelier',
-        'atelier' => 'The atelier is open to visitors on Saturdays',
+        'handmade' => 'Every piece is finished by hand at our bench',
+        'atelier' => 'Every enamel leaf is painted by hand',
         'restock' => 'New pieces on the bench every month',
         'enquire' => 'Found a piece you like? Just write to us',
     ],
@@ -39,7 +39,7 @@ return [
     ],
 
     'footer' => [
-        'about' => 'We turn sunlight into jewellery. Every piece is finished by hand in our small İzmir atelier, while the light is still on the bench.',
+        'about' => 'We turn sunlight into jewellery. Every piece is finished by hand in our small atelier, while the light is still on the bench.',
         'shop' => 'Collection',
         'all_products' => 'All pieces',
         'help' => 'Information',
@@ -47,7 +47,7 @@ return [
         'faq' => 'Frequently asked',
         'ask_title' => 'Anything you want to know?',
         'ask_text' => 'Sizing, plating, how long a piece takes, gift wrapping — ask us anything. On weekdays we reply within a few hours.',
-        'ask_hours' => 'Mon – Fri 9am – 6pm · Sat 11am – 4pm',
+        'ask_hours' => 'We reply Mon – Fri, 9am – 6pm',
         'rights' => '© :year Sun Accesories. All rights reserved.',
         'terms' => 'Terms of use',
         'privacy' => 'Privacy',

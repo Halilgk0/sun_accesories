@@ -1,6 +1,6 @@
 # Sun Accesories
 
-İzmir'deki atölyenin takı vitrini. Sipariş almaz, ödeme almaz, ziyaretçiden
+Atölyenin takı vitrini. Sipariş almaz, ödeme almaz, ziyaretçiden
 hiçbir bilgi istemez — parçaları gösterir ve ilgilenen kişiyi Instagram'dan
 yazmaya yönlendirir.
 

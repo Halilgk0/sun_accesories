@@ -7,7 +7,7 @@ return [
         'title_1' => 'Jewellery that',
         'title_accent' => 'carries',
         'title_2' => 'the light',
-        'lead' => 'Daisies, tulips, butterflies and a handful of sun. Finished by hand in our İzmir atelier, made for the kind of pieces you never take off.',
+        'lead' => 'Daisies, tulips, butterflies and a handful of sun. Finished by hand at our bench, made for the kind of pieces you never take off.',
         'cta_primary' => 'Browse the collection',
         'cta_secondary' => 'Meet the atelier',
 
@@ -22,10 +22,14 @@ return [
         'products_title' => 'The five pieces in the collection',
         'products_lead' => 'We keep the collection deliberately small. Open any piece to see the detail, and write us a line if you would like it.',
 
-        'visit_eyebrow' => 'Our door is open',
-        'visit_title' => 'Come and try it at the bench',
-        'visit_text' => 'Choosing from photographs is hard. Drop by the atelier, hold the piece, and we will find your size together. Coffee is on us.',
-        'visit_cta' => 'Book a visit',
+        'visit_eyebrow' => 'Just ask',
+        'visit_title' => 'Let us talk about the piece you like',
+        'visit_text' => 'Choosing from photographs is hard. Sizing, colour, how long it takes — ask us anything and we will work it out together.',
+        'visit_cta' => 'Write to us',
+
+        'ask_1' => 'Sizing and fit',
+        'ask_2' => 'Plating and care',
+        'ask_3' => 'How long it takes',
 
         'atelier_title' => 'Every piece takes a morning',
         'atelier_text_1' => 'We do not sell jewellery straight out of a mould. We start when the sun reaches the bench; we paint the enamel by hand and wire each chain one link at a time. That is why no two pieces are exactly alike — and we would not want them to be.',
@@ -54,13 +58,12 @@ return [
 
     'about' => [
         'meta_title' => 'Atelier',
-        'title' => 'A room in İzmir that faces the morning sun',
-        'lead' => 'Sun Accesories started in Alsancak in 2019 with two benches and a box of enamel paint. We are still in the same room.',
-        'location' => 'Alsancak, İzmir',
+        'title' => 'A room that faces the morning sun',
+        'lead' => 'Sun Accesories started in 2019 with two benches and a box of enamel paint. We are still in the same room.',
 
         'why_title' => 'Why do we make so few pieces?',
         'why_text_1' => 'Because no new design joins the collection without weeks of wearing it ourselves. If an earring tires the ear, or a clasp will not close one-handed, we go back to the bench. We would rather get five pieces right than manage fifty.',
-        'why_text_2' => 'We mix the enamel ourselves and work with the same plater in İzmir. That is why no two daisy studs are identical — and we count that as a signature, not a flaw.',
+        'why_text_2' => 'We mix the enamel ourselves and have worked with the same plater for years. That is why no two daisy studs are identical — and we count that as a signature, not a flaw.',
 
         'process_title' => 'How a piece gets from the bench to your door',
         'step_1_title' => 'Drawing',
@@ -80,19 +83,10 @@ return [
         'value_3_title' => 'Repairable',
         'value_3_text' => 'Do not throw away a broken chain. Send it to us — repairs are free for the first year.',
 
-        'visit_title' => 'Would you like to see the atelier?',
-        'visit_text' => 'Our door is open on Saturdays between 11am and 4pm. Coffee is on us, and you can sit at the bench.',
-        'visit_cta' => 'Book a visit',
+        'visit_title' => 'Anything you would like to know?',
+        'visit_text' => 'Sizing, plating, how long a piece takes, gift wrapping — ask us anything. On weekdays we reply within a few hours.',
 
-        'location_title' => 'Atelier',
         'email_label' => 'Email',
-        'address' => 'Alsancak Mah. Papatya Sok. No:7 D:3, Konak / İzmir',
-
-        'hours_title' => 'Opening hours',
-        'weekdays' => 'Monday – Friday',
-        'saturday' => 'Saturday',
-        'sunday' => 'Sunday',
-        'closed' => 'Closed',
 
         'faq_title' => 'Frequently asked',
         'faq_1_q' => 'How do I buy a piece?',

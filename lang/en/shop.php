@@ -30,7 +30,7 @@ return [
 
     'promises' => [
         'shipping_title' => 'Made by hand',
-        'shipping_text' => 'Every piece is finished to order in our İzmir atelier.',
+        'shipping_text' => 'Every piece is finished to order at our bench.',
         'returns_title' => 'Kind to skin',
         'returns_text' => 'Nickel-free bodies and hypoallergenic plating for sensitive skin.',
         'warranty_title' => '2 year warranty',

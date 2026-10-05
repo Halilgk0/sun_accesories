@@ -180,19 +180,17 @@
                 </a>
             </div>
 
-            {{-- Opening hours, in place of the old countdown --}}
-            <dl class="grid grid-cols-1 gap-2 sm:gap-3">
-                @foreach ([
-                    [__('pages.about.weekdays'), '09.00 – 18.00'],
-                    [__('pages.about.saturday'), '11.00 – 16.00'],
-                    [__('pages.about.sunday'), __('pages.about.closed')],
-                ] as [$day, $hours])
-                    <div class="flex items-center justify-between rounded-xl border-2 border-white/25 bg-white/10 px-3.5 py-2.5 backdrop-blur-sm sm:rounded-2xl sm:px-5 sm:py-3.5">
-                        <dt class="text-xs text-white/80 sm:text-sm">{{ $day }}</dt>
-                        <dd class="font-display text-base tabular-nums sm:text-xl">{{ $hours }}</dd>
-                    </div>
+            {{-- What people actually write in about. The opening hours that
+                 used to sit here invited someone to a place, and the atelier
+                 is not a shop to walk into. --}}
+            <ul class="grid grid-cols-1 gap-2 sm:gap-3">
+                @foreach (['ask_1', 'ask_2', 'ask_3'] as $key)
+                    <li class="flex items-center gap-3 rounded-xl border-2 border-white/25 bg-white/10 px-3.5 py-2.5 backdrop-blur-sm sm:rounded-2xl sm:px-5 sm:py-3.5">
+                        <svg class="size-4 shrink-0 sm:size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg>
+                        <span class="font-display text-base sm:text-xl">{{ __('pages.home.'.$key) }}</span>
+                    </li>
                 @endforeach
-            </dl>
+            </ul>
         </div>
     </div>
 </section>

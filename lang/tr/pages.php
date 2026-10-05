@@ -7,7 +7,7 @@ return [
         'title_1' => 'Güneş',
         'title_accent' => 'ışığını',
         'title_2' => 'taşıyan takılar',
-        'lead' => 'Papatya, lale, kelebek ve bir avuç güneş. İzmir\'deki atölyemizde elde tamamlanan, sabah kahvenden gece yemeğine kadar çıkarmayacağın parçalar.',
+        'lead' => 'Papatya, lale, kelebek ve bir avuç güneş. Atölyemizde elde tamamlanan, sabah kahvenden gece yemeğine kadar çıkarmayacağın parçalar.',
         'cta_primary' => 'Koleksiyonu gez',
         'cta_secondary' => 'Atölyeyi tanı',
 
@@ -22,10 +22,14 @@ return [
         'products_title' => 'Koleksiyondaki beş parça',
         'products_lead' => 'Koleksiyonu kasıtlı olarak küçük tutuyoruz. Beğendiğin parçaya tıkla, detaylarını gör; almak istersen bize bir satır yazman yeterli.',
 
-        'visit_eyebrow' => 'Kapımız açık',
-        'visit_title' => 'Gel, tezgâhın başında dene',
-        'visit_text' => 'Parçaları fotoğraftan seçmek zor. Atölyeye uğra, elinde tut, ölçünü birlikte bakalım. Kahve bizden.',
-        'visit_cta' => 'Randevu al',
+        'visit_eyebrow' => 'Sormaktan çekinme',
+        'visit_title' => 'Beğendiğin parçayı birlikte konuşalım',
+        'visit_text' => 'Parçaları fotoğraftan seçmek zor. Ölçü, renk, hazırlık süresi — ne merak ediyorsan yaz, birlikte bakalım.',
+        'visit_cta' => 'Bize yaz',
+
+        'ask_1' => 'Ölçü ve beden',
+        'ask_2' => 'Kaplama ve bakım',
+        'ask_3' => 'Hazırlık süresi',
 
         'atelier_title' => 'Her parça bir sabahın işi',
         'atelier_text_1' => 'Kalıptan çıkmış takı satmıyoruz. Güneş atölyeye girdiğinde başlıyoruz; mineyi elle boyuyor, zinciri tek tek tellendiriyoruz. Bu yüzden bazı parçalar birbirine tıpatıp benzemez — benzemesini de istemiyoruz.',
@@ -54,13 +58,12 @@ return [
 
     'about' => [
         'meta_title' => 'Atölye',
-        'title' => 'İzmir\'de, sabah ışığına bakan bir oda',
-        'lead' => 'Sun Accesories 2019\'da Alsancak\'ta iki tezgâh ve bir kutu mine boyasıyla başladı. Bugün hâlâ aynı odadayız.',
-        'location' => 'Alsancak, İzmir',
+        'title' => 'Sabah ışığına bakan bir oda',
+        'lead' => 'Sun Accesories 2019\'da iki tezgâh ve bir kutu mine boyasıyla başladı. Bugün hâlâ aynı odadayız.',
 
         'why_title' => 'Neden bu kadar az parça üretiyoruz?',
         'why_text_1' => 'Çünkü her yeni model, haftalarca elde denenmeden koleksiyona girmiyor. Bir küpenin ağırlığı kulağı yoruyorsa, bir zincirin kilidi tek elle kapanmıyorsa geri dönüyoruz. Beş parçayı doğru yapmayı, elli parçayı idare etmeye tercih ediyoruz.',
-        'why_text_2' => 'Mineyi kendimiz karıyoruz, kaplamayı İzmir\'deki aynı ustayla yapıyoruz. Bu yüzden iki papatya küpesi asla tıpatıp aynı değil — ve bunu bir kusur değil, imza sayıyoruz.',
+        'why_text_2' => 'Mineyi kendimiz karıyoruz, kaplamayı yıllardır aynı ustayla yapıyoruz. Bu yüzden iki papatya küpesi asla tıpatıp aynı değil — ve bunu bir kusur değil, imza sayıyoruz.',
 
         'process_title' => 'Bir takı tezgâhtan kapına nasıl gelir?',
         'step_1_title' => 'Çizim',
@@ -80,19 +83,10 @@ return [
         'value_3_title' => 'Onarılabilir',
         'value_3_text' => 'Kopan zinciri çöpe atma. Bize gönder, ilk yıl ücretsiz onarıyoruz.',
 
-        'visit_title' => 'Atölyeyi görmek ister misin?',
-        'visit_text' => 'Cumartesileri 11.00–16.00 arası kapımız açık. Kahve bizden, tezgâhın başına oturabilirsin.',
-        'visit_cta' => 'Randevu al',
+        'visit_title' => 'Aklına takılan bir şey mi var?',
+        'visit_text' => 'Ölçü, kaplama, hazırlık süresi, hediye paketi — ne sorarsan yaz. Hafta içi birkaç saat içinde dönüyoruz.',
 
-        'location_title' => 'Atölye',
         'email_label' => 'E-posta',
-        'address' => 'Alsancak Mah. Papatya Sok. No:7 D:3, Konak / İzmir',
-
-        'hours_title' => 'Çalışma saatleri',
-        'weekdays' => 'Pazartesi – Cuma',
-        'saturday' => 'Cumartesi',
-        'sunday' => 'Pazar',
-        'closed' => 'Kapalı',
 
         'faq_title' => 'Sık sorulanlar',
         'faq_1_q' => 'Bir parçayı nasıl alabilirim?',
