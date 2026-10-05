@@ -161,3 +161,12 @@ it('shows a category on the collection page under its edited name', function () 
     $this->get(route('products.index'))->assertOk()->assertSee('Yüzükler');
     $this->get(route('home'))->assertOk()->assertSee('Yüzükler');
 });
+
+it('can always reach the setup step, even with the schema behind', function () {
+    asAdmin();
+
+    // A migration added later leaves the catalogue unreadable; if the panel
+    // only offered to fix that from a page which itself needs the new tables,
+    // there would be no way back in.
+    $this->get(adminPath('kurulum'))->assertOk()->assertSee(__('admin.setup_run'));
+});

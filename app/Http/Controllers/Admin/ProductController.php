@@ -20,9 +20,12 @@ class ProductController extends Controller
         // there is no release step on Vercel to migrate it, so an unprepared
         // database is shown as something to fix rather than as a crash.
         try {
-            $products = Product::orderBy('id')->get();
+            // Eager loaded so the page does not query per row, and so a
+            // missing table surfaces here rather than halfway through
+            // rendering the list.
+            $products = Product::with('categoryRelation')->orderBy('id')->get();
         } catch (QueryException) {
-            // Nothing to list because the table is not there yet.
+            // A table this build expects is not there yet.
             return view('admin.setup');
         }
 
@@ -37,6 +40,12 @@ class ProductController extends Controller
      * pieces back. Both steps are safe to repeat: migrations are tracked and
      * the seeder works by updateOrCreate.
      */
+    /** Reachable at any time, so a schema left behind can always be caught up. */
+    public function setupPage(): View
+    {
+        return view('admin.setup');
+    }
+
     public function setup(): RedirectResponse
     {
         Artisan::call('migrate', ['--force' => true]);

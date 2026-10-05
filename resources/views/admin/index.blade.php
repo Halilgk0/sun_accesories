@@ -10,6 +10,7 @@
 
     <div class="flex flex-wrap gap-2.5">
     <a href="{{ route('admin.categories.index') }}" class="btn btn-outline px-6 py-3">{{ __('admin.categories') }}</a>
+    <a href="{{ route('admin.setup.show') }}" class="btn btn-quiet px-5 py-3">{{ __('admin.setup_run') }}</a>
 
     <a href="{{ route('admin.products.create') }}" class="btn btn-sun px-6 py-3">
         <svg class="size-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>

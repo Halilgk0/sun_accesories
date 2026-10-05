@@ -45,6 +45,7 @@ if (filled($adminPath = config('admin.path'))) {
                 Route::post('/cikis', [AdminSessionController::class, 'destroy'])->name('logout');
 
                 Route::get('/', [AdminProductController::class, 'index'])->name('products.index');
+                Route::get('/kurulum', [AdminProductController::class, 'setupPage'])->name('setup.show');
                 Route::post('/kurulum', [AdminProductController::class, 'setup'])->name('setup');
                 Route::get('/yeni', [AdminProductController::class, 'create'])->name('products.create');
                 Route::post('/', [AdminProductController::class, 'store'])->name('products.store');
