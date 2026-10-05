@@ -45,7 +45,16 @@ function watchImage() {
     const show = () => {
         if (!preview) return;
         const path = input.value.trim();
-        preview.src = path === '' ? '' : (/^https?:\/\//.test(path) ? path : '/' + path.replace(/^\/+/, ''));
+
+        if (path === '') {
+            preview.removeAttribute('src');
+            preview.classList.add('hidden');
+
+            return;
+        }
+
+        preview.src = /^https?:\/\//.test(path) ? path : '/' + path.replace(/^\/+/, '');
+        preview.classList.remove('hidden');
     };
 
     document.querySelectorAll('[data-pick-image]').forEach((button) => {
@@ -57,6 +66,21 @@ function watchImage() {
 
     input.addEventListener('input', show);
     show();
+}
+
+/** Shows the chosen file before it is uploaded, so a mistake is obvious. */
+function watchPhoto() {
+    const input = document.querySelector('[data-photo-input]');
+    const preview = document.querySelector('[data-image-preview]');
+    if (!input || !preview) return;
+
+    input.addEventListener('change', () => {
+        const file = input.files?.[0];
+        if (!file) return;
+
+        preview.src = URL.createObjectURL(file);
+        preview.classList.remove('hidden');
+    });
 }
 
 /** The swatch and the hex box are two views of one value. */
@@ -76,4 +100,5 @@ document.addEventListener('DOMContentLoaded', () => {
     watchSlug();
     watchImage();
     watchColour();
+    watchPhoto();
 });

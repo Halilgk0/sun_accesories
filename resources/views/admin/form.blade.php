@@ -29,7 +29,7 @@
     </p>
 @endif
 
-<form method="POST" action="{{ $saving['action'] }}" class="space-y-5">
+<form method="POST" action="{{ $saving['action'] }}" enctype="multipart/form-data" class="space-y-5">
     @csrf
     @method($saving['method'])
 
@@ -65,9 +65,9 @@
                 <div>
                     <label for="category" class="label">{{ __('admin.fields.category') }}</label>
                     <select id="category" name="category" required class="field" @if ($errors->has('category')) aria-invalid="true" @endif>
-                        @foreach (\App\Models\Product::CATEGORIES as $category)
-                            <option value="{{ $category }}" @selected($value('category') === $category)>
-                                {{ __('shop.categories.'.$category) }}
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->slug }}" @selected($value('category') === $category->slug)>
+                                {{ $category->name }}
                             </option>
                         @endforeach
                     </select>
@@ -159,8 +159,17 @@
         <h2 class="font-display text-xl">{{ __('admin.section_look') }}</h2>
         <p class="mt-1 mb-5 text-sm text-ink-soft">{{ __('admin.section_look_hint') }}</p>
 
-        <label for="image_path" class="label">{{ __('admin.fields.image_path') }}</label>
-        <p class="mb-3 text-xs text-ink-soft">{{ __('admin.hints.image_path') }}</p>
+        <label for="photo" class="label">{{ __('admin.fields.photo') }}</label>
+        <input id="photo" name="photo" type="file" accept="image/jpeg,image/png,image/webp,image/avif"
+               data-photo-input
+               class="field cursor-pointer file:mr-3 file:rounded-full file:border-0 file:bg-ink file:px-4 file:py-1.5 file:text-sm file:font-semibold file:text-paper-warm"
+               @if ($errors->has('photo')) aria-invalid="true" @endif>
+        <p class="mt-1.5 text-xs text-ink-soft">{{ __('admin.hints.photo') }}</p>
+        @error('photo') <p class="field-error">{{ $message }}</p> @enderror
+
+        <p class="mt-6 mb-3 text-xs font-semibold tracking-wide text-ink-soft uppercase">{{ __('admin.image_or_choose') }}</p>
+
+        <label for="image_path" class="sr-only">{{ __('admin.fields.image_path') }}</label>
 
         @if ($images)
             <div class="mb-4 flex flex-wrap gap-2.5">
@@ -173,7 +182,9 @@
             </div>
         @endif
 
-        <input id="image_path" name="image_path" type="text" required maxlength="500" data-image-input
+        {{-- Not required in the markup: a photograph may be uploaded instead,
+             and the server enforces that one of the two is given. --}}
+        <input id="image_path" name="image_path" type="text" maxlength="500" data-image-input
                value="{{ $value('image_path') }}" placeholder="images/products/ornek.jpg"
                class="field" @if ($errors->has('image_path')) aria-invalid="true" @endif>
         @error('image_path') <p class="field-error">{{ $message }}</p> @enderror
@@ -181,8 +192,12 @@
         <div class="mt-5 grid gap-5 sm:grid-cols-[auto_1fr] sm:items-start">
             <div>
                 <span class="label">{{ __('admin.image_preview') }}</span>
-                <img data-image-preview src="{{ $value('image_path') ? asset($value('image_path')) : '' }}" alt=""
-                     class="size-32 rounded-2xl border-2 border-paper-deep object-cover">
+                {{-- An empty src draws a broken-image icon, so it stays hidden
+                     until there is something to show. --}}
+                <img data-image-preview
+                     @if ($value('image_path')) src="{{ asset($value('image_path')) }}" @endif
+                     alt=""
+                     class="size-32 rounded-2xl border-2 border-paper-deep object-cover @unless ($value('image_path')) hidden @endunless">
             </div>
 
             <div>

@@ -1,13 +1,6 @@
 <?php
 
 return [
-    'categories' => [
-        'necklace' => 'Necklaces',
-        'earrings' => 'Earrings',
-        'bracelet' => 'Bracelets',
-        'ring' => 'Rings',
-        'anklet' => 'Anklets',
-    ],
 
     'badges' => [
         'bestseller' => 'Much Loved',

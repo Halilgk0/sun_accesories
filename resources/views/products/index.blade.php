@@ -37,9 +37,9 @@
                         {{ __('shop.catalog.all') }}
                     </a>
                     @foreach ($categories as $category)
-                        <a href="{{ route('products.index', array_filter(['kategori' => $category, 'sirala' => request('sirala')])) }}"
-                           class="btn btn-quiet {{ $activeCategory === $category ? 'border-sun bg-sun-pale' : '' }}">
-                            {{ __('shop.categories.'.$category) }}
+                        <a href="{{ route('products.index', array_filter(['kategori' => $category->slug, 'sirala' => request('sirala')])) }}"
+                           class="btn btn-quiet {{ $activeCategory === $category->slug ? 'border-sun bg-sun-pale' : '' }}">
+                            {{ $category->label() }}
                         </a>
                     @endforeach
                 </div>
@@ -63,9 +63,9 @@
                         {{ __('shop.catalog.all') }}
                     </a>
                     @foreach ($categories as $category)
-                        <a href="{{ route('products.index', array_filter(['kategori' => $category, 'sirala' => request('sirala')])) }}"
-                           class="btn btn-quiet {{ $activeCategory === $category ? 'border-sun bg-sun-pale' : '' }}">
-                            {{ __('shop.categories.'.$category) }}
+                        <a href="{{ route('products.index', array_filter(['kategori' => $category->slug, 'sirala' => request('sirala')])) }}"
+                           class="btn btn-quiet {{ $activeCategory === $category->slug ? 'border-sun bg-sun-pale' : '' }}">
+                            {{ $category->label() }}
                         </a>
                     @endforeach
                 </div>
@@ -100,7 +100,7 @@
         <p class="mb-4 text-xs font-semibold text-ink-soft sm:mb-6 sm:text-sm">
             {{ __('shop.catalog.count', ['count' => $products->count()]) }}
             @if ($activeCategory !== '')
-                · <span class="text-bole">{{ __('shop.categories.'.$activeCategory) }}</span>
+                · <span class="text-bole">{{ $categories->firstWhere('slug', $activeCategory)?->label() ?? $activeCategory }}</span>
             @endif
         </p>
 

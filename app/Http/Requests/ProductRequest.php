@@ -28,7 +28,7 @@ class ProductRequest extends FormRequest
                 'required', 'string', 'max:140', 'regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/',
                 Rule::unique('products', 'slug')->ignore($product),
             ],
-            'category' => ['required', 'string', Rule::in(Product::CATEGORIES)],
+            'category' => ['required', 'string', Rule::exists('categories', 'slug')],
             'badge' => ['nullable', 'string', Rule::in(Product::BADGES)],
 
             'tagline' => ['required', 'string', 'max:160'],
@@ -39,7 +39,10 @@ class ProductRequest extends FormRequest
             'price' => ['required', 'numeric', 'min:0', 'max:9999999'],
             'compare_at_price' => ['nullable', 'numeric', 'min:0', 'max:9999999', 'gt:price'],
 
-            'image_path' => ['required', 'string', 'max:500'],
+            // Either a photograph is uploaded or a path is given; the
+            // controller fills image_path from the upload when there is one.
+            'photo' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp,avif', 'max:4096'],
+            'image_path' => ['required_without:photo', 'nullable', 'string', 'max:500'],
             'material' => ['required', 'string', 'max:120'],
             'material_en' => ['nullable', 'string', 'max:120'],
             'stone' => ['required', 'string', 'max:120'],

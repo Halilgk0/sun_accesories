@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -18,7 +19,8 @@ class ProductFactory extends Factory
             'name' => Str::title($name),
             'name_en' => Str::title($name),
             'slug' => Str::slug($name),
-            'category' => fake()->randomElement(['necklace', 'earrings', 'bracelet', 'ring', 'anklet']),
+            'category' => Category::query()->inRandomOrder()->value('slug')
+                ?? Category::factory()->create()->slug,
             'tagline' => fake()->sentence(4),
             'tagline_en' => fake()->sentence(4),
             'description' => fake()->paragraph(),

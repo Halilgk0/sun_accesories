@@ -1,13 +1,6 @@
 <?php
 
 return [
-    'categories' => [
-        'necklace' => 'Kolye',
-        'earrings' => 'Küpe',
-        'bracelet' => 'Bileklik',
-        'ring' => 'Yüzük',
-        'anklet' => 'Halhal',
-    ],
 
     'badges' => [
         'bestseller' => 'Çok Sevilen',

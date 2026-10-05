@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use App\Support\Instagram;
 use Illuminate\Contracts\View\View;
@@ -38,7 +39,7 @@ class ProductController extends Controller
 
         return view('products.index', [
             'products' => $products,
-            'categories' => Product::query()->select('category')->distinct()->orderBy('category')->pluck('category'),
+            'categories' => Category::ordered()->get(),
             'activeCategory' => $category,
             'activeSort' => $sort,
         ]);

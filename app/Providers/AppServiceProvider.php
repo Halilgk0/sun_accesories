@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
 use App\Support\Instagram;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\View as ViewFacade;
@@ -29,7 +30,10 @@ class AppServiceProvider extends ServiceProvider
             fn (View $view) => $view
                 ->with('instagramUrl', Instagram::dmLink())
                 ->with('instagramProfile', Instagram::profileLink())
-                ->with('instagramHandle', Instagram::handle()),
+                ->with('instagramHandle', Instagram::handle())
+                // The footer and the home page both list categories, and they
+                // are rows the atelier edits rather than a fixed set.
+                ->with('navCategories', Category::ordered()->get()),
         );
     }
 }

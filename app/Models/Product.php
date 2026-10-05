@@ -5,21 +5,13 @@ namespace App\Models;
 use Database\Factories\ProductFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\App;
 
 class Product extends Model
 {
     /** @use HasFactory<ProductFactory> */
     use HasFactory;
-
-    /**
-     * The categories a piece can belong to, as keys the translation files
-     * carry labels for. The editor offers these and nothing else, so a typo
-     * can never leave a product with a category that renders as a raw key.
-     *
-     * @var array<int, string>
-     */
-    public const CATEGORIES = ['necklace', 'earrings', 'bracelet', 'ring', 'anklet'];
 
     /** @var array<int, string> */
     public const BADGES = ['bestseller', 'new_in', 'deal', 'handmade', 'everyday'];
@@ -59,9 +51,20 @@ class Product extends Model
         return (string) $this->getAttribute($field);
     }
 
+    /**
+     * Categories are rows now, so a product whose category was deleted falls
+     * back to the slug rather than rendering nothing.
+     *
+     * @return BelongsTo<Category, $this>
+     */
+    public function categoryRelation(): BelongsTo
+    {
+        return $this->belongsTo(Category::class, 'category', 'slug');
+    }
+
     public function categoryLabel(): string
     {
-        return __('shop.categories.'.$this->category);
+        return $this->categoryRelation?->label() ?? $this->category;
     }
 
     public function badgeLabel(): ?string

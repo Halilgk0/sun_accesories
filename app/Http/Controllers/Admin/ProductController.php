@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
+use App\Models\Category;
+use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\QueryException;
@@ -58,12 +60,13 @@ class ProductController extends Controller
                 'review_count' => 0,
             ]),
             'images' => $this->availableImages(),
+            'categories' => Category::ordered()->get(),
         ]);
     }
 
     public function store(ProductRequest $request): RedirectResponse
     {
-        $product = Product::create($request->validated());
+        $product = Product::create($this->withPhoto($request));
 
         return redirect()
             ->route('admin.products.index')
@@ -75,12 +78,13 @@ class ProductController extends Controller
         return view('admin.form', [
             'product' => $product,
             'images' => $this->availableImages(),
+            'categories' => Category::ordered()->get(),
         ]);
     }
 
     public function update(ProductRequest $request, Product $product): RedirectResponse
     {
-        $product->update($request->validated());
+        $product->update($this->withPhoto($request, $product));
 
         return redirect()
             ->route('admin.products.index')
@@ -98,8 +102,29 @@ class ProductController extends Controller
     }
 
     /**
-     * The photographs already shipped with the site, offered as a picker so a
-     * path never has to be typed by hand.
+     * Puts an uploaded photograph in the database and points the product at
+     * it. Without an upload the path the form carried is kept, so editing a
+     * piece does not require re-uploading its picture.
+     *
+     * @return array<string, mixed>
+     */
+    private function withPhoto(ProductRequest $request, ?Product $product = null): array
+    {
+        $fields = $request->validated();
+        unset($fields['photo']);
+
+        if ($request->hasFile('photo')) {
+            $fields['image_path'] = Image::store($request->file('photo'))->path();
+        } elseif (blank($fields['image_path'] ?? null)) {
+            $fields['image_path'] = $product?->image_path ?? '';
+        }
+
+        return $fields;
+    }
+
+    /**
+     * Everything that can be chosen as a photograph: the ones shipped with the
+     * site and everything uploaded since.
      *
      * @return array<int, string>
      */
@@ -116,9 +141,15 @@ class ProductController extends Controller
 
         sort($files);
 
-        return array_map(
+        $shipped = array_map(
             fn (string $file) => 'images/products/'.basename($file),
             $files,
         );
+
+        $uploaded = Image::latest('id')->take(40)->get()
+            ->map(fn (Image $image) => $image->path())
+            ->all();
+
+        return [...$uploaded, ...$shipped];
     }
 }

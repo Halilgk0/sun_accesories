@@ -33,8 +33,8 @@
             <h3 class="mb-4 font-display text-base text-sun sm:text-lg">{{ __('site.footer.shop') }}</h3>
             <ul class="space-y-1 text-sm text-paper-warm/75 sm:space-y-1.5">
                 <li><a href="{{ route('products.index') }}" class="inline-block py-1.5 transition hover:text-sun sm:py-1">{{ __('site.footer.all_products') }}</a></li>
-                @foreach (['necklace', 'earrings', 'ring'] as $category)
-                    <li><a href="{{ route('products.index', ['kategori' => $category]) }}" class="inline-block py-1.5 transition hover:text-sun sm:py-1">{{ __('shop.categories.'.$category) }}</a></li>
+                @foreach ($navCategories->take(4) as $category)
+                    <li><a href="{{ route('products.index', ['kategori' => $category->slug]) }}" class="inline-block py-1.5 transition hover:text-sun sm:py-1">{{ $category->label() }}</a></li>
                 @endforeach
             </ul>
         </div>

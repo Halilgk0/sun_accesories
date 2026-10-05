@@ -105,20 +105,27 @@
         </div>
 
         <div class="grid grid-cols-2 gap-3.5 sm:gap-4 md:grid-cols-5">
-            @foreach ([
-                ['necklace', '☀', 'from-sun to-sun-deep'],
-                ['earrings', '✿', 'from-blush to-bole'],
-                ['bracelet', '✦', 'from-sun-pale to-sun'],
-                ['ring', '❀', 'from-bole-bright to-bole'],
-                ['anklet', '✧', 'from-turkuaz-bright to-turkuaz'],
-            ] as $index => [$key, $glyph, $gradient])
-                <a href="{{ route('products.index', ['kategori' => $key]) }}"
+            {{-- A glyph and a gradient per card, handed out in turn so a
+                 category added later is dressed like the rest.
+
+                 These use the inline php directive on purpose. Blade lifts
+                 raw php blocks by matching the opening directive to the first
+                 closing one, and this file opens one inline further up, so a
+                 block form anywhere below would be paired with that and would
+                 swallow every directive in between. --}}
+            @php($glyphs = ['☀', '✿', '✦', '❀', '✧'])
+            @php($gradients = ['from-sun to-sun-deep', 'from-blush to-bole', 'from-sun-pale to-sun', 'from-bole-bright to-bole', 'from-turkuaz-bright to-turkuaz'])
+
+            @foreach ($navCategories as $index => $category)
+                @php($glyph = $glyphs[$index % count($glyphs)])
+                @php($gradient = $gradients[$index % count($gradients)])
+                <a href="{{ route('products.index', ['kategori' => $category->slug]) }}"
                    class="reveal group relative overflow-hidden rounded-2xl border-2 border-white/10 bg-white/5 p-4 text-center transition duration-500 hover:-translate-y-2 hover:border-sun/60 hover:bg-white/10 last:col-span-2 sm:rounded-3xl sm:p-6 md:last:col-span-1"
                    style="--reveal-delay: {{ $index * 90 }}ms">
                     <span class="mx-auto mb-2.5 grid size-10 place-items-center rounded-full bg-linear-to-br {{ $gradient }} text-lg text-white transition-transform duration-500 group-hover:scale-115 group-hover:rotate-12 sm:mb-4 sm:size-14 sm:text-2xl">
                         {{ $glyph }}
                     </span>
-                    <span class="block font-display text-base sm:text-xl">{{ __('shop.categories.'.$key) }}</span>
+                    <span class="block font-display text-base sm:text-xl">{{ $category->label() }}</span>
                 </a>
             @endforeach
         </div>
