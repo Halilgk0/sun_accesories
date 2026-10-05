@@ -25,10 +25,13 @@ it('has no basket, checkout, account, sign-in or contact routes', function () {
     }
 });
 
-it('accepts no submissions but the language switch', function () {
+it('accepts no submissions from a visitor but the language switch', function () {
+    // The catalogue editor posts, of course, but it sits behind a password on
+    // a path no visitor is given. This is about what the shop itself asks for.
     $posts = collect(app('router')->getRoutes())
         ->filter(fn ($route) => in_array('POST', $route->methods(), true))
         ->map->getName()
+        ->reject(fn (?string $name) => str_starts_with((string) $name, 'admin.'))
         ->values()
         ->all();
 

@@ -12,6 +12,18 @@ class Product extends Model
     /** @use HasFactory<ProductFactory> */
     use HasFactory;
 
+    /**
+     * The categories a piece can belong to, as keys the translation files
+     * carry labels for. The editor offers these and nothing else, so a typo
+     * can never leave a product with a category that renders as a raw key.
+     *
+     * @var array<int, string>
+     */
+    public const CATEGORIES = ['necklace', 'earrings', 'bracelet', 'ring', 'anklet'];
+
+    /** @var array<int, string> */
+    public const BADGES = ['bestseller', 'new_in', 'deal', 'handmade', 'everyday'];
+
     protected $guarded = [];
 
     /** @return array<string, string> */

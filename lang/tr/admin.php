@@ -1,0 +1,94 @@
+<?php
+
+/**
+ * The editor is only ever read by whoever runs the atelier, so it is written
+ * in Turkish alone and does not follow the visitor's language.
+ */
+return [
+    'title' => 'Katalog',
+    'sign_in_title' => 'Katalog yönetimi',
+    'sign_in_lead' => 'Devam etmek için şifreyi gir.',
+    'password' => 'Şifre',
+    'sign_in' => 'Gir',
+    'sign_out' => 'Çık',
+    'wrong_password' => 'Şifre yanlış.',
+    'signed_out' => 'Çıkış yapıldı.',
+    'locked' => 'Panel kapalı: sunucuda ADMIN_PASSWORD tanımlı değil.',
+
+    'setup_title' => 'Veritabanı hazır değil',
+    'setup_missing' => 'Katalog tabloları henüz oluşturulmamış. Aşağıdaki düğme tabloları kurar ve beş parçayı yerleştirir.',
+    'seed_samples' => 'Örnek beş parçayı yükle',
+    'setup_run' => 'Veritabanını hazırla',
+    'setup_safe' => 'Bu işlemi birden çok kez çalıştırmak zararsızdır; mevcut parçaların silinmez.',
+    'setup_done' => 'Veritabanı hazır.',
+
+    'count' => ':count parça',
+    'new' => 'Yeni parça ekle',
+    'edit' => 'Düzenle',
+    'view' => 'Sayfasını aç',
+    'delete' => 'Sil',
+    'delete_confirm' => '":name" silinecek. Bu geri alınamaz. Emin misin?',
+    'empty' => 'Henüz parça yok. İlkini ekleyerek başla.',
+
+    'created' => '":name" eklendi.',
+    'updated' => '":name" güncellendi.',
+    'deleted' => '":name" silindi.',
+
+    'form_new' => 'Yeni parça',
+    'form_edit' => ':name düzenleniyor',
+    'save' => 'Kaydet',
+    'cancel' => 'Vazgeç',
+    'back' => 'Listeye dön',
+
+    'section_basics' => 'Temel bilgiler',
+    'section_basics_hint' => 'Adı, adresi ve hangi kategoride göründüğü.',
+    'section_copy' => 'Metinler',
+    'section_copy_hint' => 'İngilizce alanları boş bırakırsan o dilde Türkçesi görünür.',
+    'section_price' => 'Fiyat ve stok',
+    'section_price_hint' => 'Eski fiyat yazarsan üstü çizili görünür ve indirim rozeti çıkar.',
+    'section_look' => 'Görsel ve görünüm',
+    'section_look_hint' => 'Fotoğraf ve karttaki renk.',
+
+    'fields' => [
+        'name' => 'Ad',
+        'name_en' => 'Ad (İngilizce)',
+        'slug' => 'Adres',
+        'category' => 'Kategori',
+        'badge' => 'Rozet',
+        'tagline' => 'Kısa tanım',
+        'tagline_en' => 'Kısa tanım (İngilizce)',
+        'description' => 'Açıklama',
+        'description_en' => 'Açıklama (İngilizce)',
+        'price' => 'Fiyat',
+        'compare_at_price' => 'Eski fiyat',
+        'image_path' => 'Fotoğraf',
+        'material' => 'Malzeme',
+        'material_en' => 'Malzeme (İngilizce)',
+        'stone' => 'Taş',
+        'stone_en' => 'Taş (İngilizce)',
+        'color_hex' => 'Kart rengi',
+        'stock' => 'Stok',
+        'rating' => 'Puan',
+        'review_count' => 'Değerlendirme sayısı',
+        'is_featured' => 'Ana sayfada öne çıkar',
+    ],
+
+    'hints' => [
+        'slug' => 'Adres çubuğunda görünecek hâli. Küçük harf ve tire: lale-yuzuk',
+        'badge' => 'İstersen boş bırak.',
+        'price' => 'Lira. Kuruş için nokta kullan: 1150.00',
+        'compare_at_price' => 'Fiyattan yüksek olmalı. İndirim yoksa boş bırak.',
+        'rating' => '0 ile 5 arası.',
+        'stock' => '0 yazarsan parça "tezgâhta yok" görünür.',
+        'image_path' => 'Hazır fotoğraflardan seç ya da bir adres yapıştır.',
+    ],
+
+    'no_badge' => '— rozet yok —',
+    'image_choose' => 'Hazır fotoğraflar',
+    'image_custom' => 'ya da fotoğraf adresi',
+    'image_preview' => 'Önizleme',
+    'slug_format' => 'Adres yalnızca küçük harf, rakam ve tire içerebilir: lale-yuzuk',
+    'colour_format' => 'Renk # ile başlayan altı haneli bir kod olmalı: #F2A007',
+    'compare_price_must_be_higher' => 'Eski fiyat, fiyattan yüksek olmalı.',
+    'errors' => 'Kaydedilmedi — aşağıdaki alanlara bak.',
+];
