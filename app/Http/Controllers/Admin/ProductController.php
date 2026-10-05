@@ -105,7 +105,16 @@ class ProductController extends Controller
      */
     private function availableImages(): array
     {
-        $files = glob(public_path('images/products/*.{jpg,jpeg,png,webp,avif}'), GLOB_BRACE) ?: [];
+        // One glob per extension rather than GLOB_BRACE: braces are a GNU
+        // extension that musl does not implement, so on the Alpine image the
+        // flag raises instead of matching and took the whole page down.
+        $files = [];
+
+        foreach (['jpg', 'jpeg', 'png', 'webp', 'avif'] as $extension) {
+            $files = [...$files, ...(glob(public_path('images/products/*.'.$extension)) ?: [])];
+        }
+
+        sort($files);
 
         return array_map(
             fn (string $file) => 'images/products/'.basename($file),

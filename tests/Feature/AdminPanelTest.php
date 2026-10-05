@@ -170,3 +170,22 @@ it('does not hand the setup step to a stranger', function () {
 
     expect(Product::query()->count())->toBe(0);
 });
+
+it('renders every page of the editor', function () {
+    signedIn();
+    $product = Product::factory()->create(['slug' => 'lale-yuzuk', 'name' => 'Lale Yüzük']);
+
+    // The forms were only ever exercised by posting to them, so a page that
+    // threw while rendering went unnoticed until it was live.
+    $this->get(adminUrl())->assertOk()->assertSee('Lale Yüzük');
+    $this->get(adminUrl('yeni'))->assertOk()->assertSee(__('admin.form_new'));
+    $this->get(adminUrl($product->slug.'/duzenle'))->assertOk()->assertSee($product->name);
+});
+
+it('offers the photographs that ship with the site', function () {
+    signedIn();
+
+    $content = $this->get(adminUrl('yeni'))->assertOk()->getContent();
+
+    expect($content)->toContain('images/products/lale-yuzuk.jpg');
+});
